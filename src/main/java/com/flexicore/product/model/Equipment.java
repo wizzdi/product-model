@@ -17,6 +17,9 @@ public class Equipment extends Product {
     public static Equipment s() {
         return s_Singleton;
     }
+    static{
+        registerSingletone(s_Singleton);
+    }
 
 
     private double lat;
