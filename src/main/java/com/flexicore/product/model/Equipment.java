@@ -19,7 +19,8 @@ public class Equipment extends Product {
     }
 
 
-
+    private double lat;
+    private double lon;
     private String serial;
     private LocalDateTime warrantyExpiration;
 
@@ -42,7 +43,7 @@ public class Equipment extends Product {
 
     @OneToMany(targetEntity = EquipmentToGroup.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
-    public List<EquipmentToGroup> equipmentToGroupList() {
+    public List<EquipmentToGroup> getEquipmentToGroupList() {
         return equipmentToGroupList;
     }
 
@@ -69,5 +70,26 @@ public class Equipment extends Product {
         return this;
     }
 
+    public double getLat() {
+        return lat;
+    }
 
+    public Equipment setLat(double lat) {
+        this.lat = lat;
+        return this;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public Equipment setLon(double lon) {
+        this.lon = lon;
+        return this;
+    }
+
+    public Equipment setEquipmentToGroupList(List<EquipmentToGroup> equipmentToGroupList) {
+        this.equipmentToGroupList = equipmentToGroupList;
+        return this;
+    }
 }
