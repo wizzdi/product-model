@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.model.Baseclass;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @Entity
-public class EquipmentGroup extends Product {
+public class EquipmentGroup extends Baseclass {
     static EquipmentGroup s_Singleton = new EquipmentGroup();
     public static EquipmentGroup s() {
         return s_Singleton;

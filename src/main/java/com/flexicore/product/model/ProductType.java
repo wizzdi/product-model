@@ -19,12 +19,12 @@ public class ProductType extends Baseclass {
 
 
 
-    @OneToMany(targetEntity = ProductTypeToProductStatus.class,mappedBy = "leftisde",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OneToMany(targetEntity = ProductTypeToProductStatus.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
     private List<ProductTypeToProductStatus> productTypeToProductStatusList=new ArrayList<>();
 
 
-    @OneToMany(targetEntity = ProductTypeToProductStatus.class,mappedBy = "leftisde",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OneToMany(targetEntity = ProductTypeToProductStatus.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
     public List<ProductTypeToProductStatus> getProductTypeToProductStatusList() {
         return productTypeToProductStatusList;
