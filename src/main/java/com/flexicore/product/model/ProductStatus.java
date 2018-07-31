@@ -2,10 +2,10 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import com.flexicore.model.FileResource;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +16,11 @@ public class ProductStatus extends Baseclass {
     public static ProductStatus s() {
         return s_Singleton;
     }
+
+    @ManyToOne(targetEntity = FileResource.class)
+    private FileResource image;
+
+    private int priority;
 
     @OneToMany(targetEntity = ProductTypeToProductStatus.class,mappedBy = "rightside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
@@ -50,6 +55,22 @@ public class ProductStatus extends Baseclass {
         return this;
     }
 
+    @ManyToOne(targetEntity = FileResource.class)
+    public FileResource getImage() {
+        return image;
+    }
 
+    public ProductStatus setImage(FileResource image) {
+        this.image = image;
+        return this;
+    }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public ProductStatus setPriority(int priority) {
+        this.priority = priority;
+        return this;
+    }
 }

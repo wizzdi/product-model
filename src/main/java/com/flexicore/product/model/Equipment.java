@@ -36,6 +36,7 @@ public class Equipment extends Product {
     private String geoHash10;
     private String geoHash11;
     private String geoHash12;
+    private boolean enable;
 
     private LocalDateTime warrantyExpiration;
 
@@ -214,6 +215,16 @@ public class Equipment extends Product {
 
     public Equipment setGeoHash12(String geoHash12) {
         this.geoHash12 = geoHash12;
+        return this;
+    }
+
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public Equipment setEnable(boolean enable) {
+        this.enable = enable;
         return this;
     }
 }
