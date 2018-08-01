@@ -15,6 +15,8 @@ public class ProductToStatus extends Baselink {
         return s_Singleton;
     }
 
+    private boolean enabled;
+
 
 
 
@@ -46,5 +48,14 @@ public class ProductToStatus extends Baselink {
     @Override
     public void setRightside(Baseclass rightside) {
         super.setRightside(rightside);
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public ProductToStatus setEnabled(boolean enabled) {
+        this.enabled = enabled;
+        return this;
     }
 }

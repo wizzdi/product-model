@@ -24,12 +24,12 @@ public class Product extends Baseclass {
     @ManyToOne(targetEntity = ProductType.class)
     private ProductType productType;
 
-    @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
     @JsonIgnore
     private List<ProductToStatus> productToStatusList=new ArrayList<>();
 
 
-    @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
     @JsonIgnore
     public List<ProductToStatus> getProductToStatusList() {
         return productToStatusList;
