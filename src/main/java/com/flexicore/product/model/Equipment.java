@@ -2,6 +2,7 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.flexicore.data.jsoncontainers.Views;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -98,6 +99,7 @@ public class Equipment extends Product {
         return this;
     }
 
+    @JsonView(Views.Full.class)
     public String getSerial() {
         return serial;
     }
@@ -107,6 +109,7 @@ public class Equipment extends Product {
         return this;
     }
 
+    @JsonView(Views.Full.class)
     public LocalDateTime getWarrantyExpiration() {
         return warrantyExpiration;
     }
@@ -140,6 +143,7 @@ public class Equipment extends Product {
     }
 
 
+    @JsonView(Views.Full.class)
     public String getGeoHash1() {
         return geoHash1;
     }
@@ -249,7 +253,7 @@ public class Equipment extends Product {
         return this;
     }
 
-
+    @JsonView(Views.Full.class)
     public boolean isEnable() {
         return enable;
     }
