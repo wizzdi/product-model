@@ -1,8 +1,6 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.flexicore.data.jsoncontainers.Views;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -43,6 +41,7 @@ public class Equipment extends Product {
     private double lat;
     private double lon;
     private String serial;
+    private String externalId;
 
     private String geoHash1;
     @JsonIgnore
@@ -71,6 +70,12 @@ public class Equipment extends Product {
 
     private LocalDateTime warrantyExpiration;
 
+    @ManyToOne(targetEntity = Gateway.class)
+    private Gateway communicationGateway;
+
+    @ManyToOne(targetEntity = ApiProvider.class)
+    private ApiProvider apiProvider;
+
     @OneToMany(targetEntity = GatewayToEquipment.class,mappedBy = "rightside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
     private List<GatewayToEquipment> gatewayToEquipmentList=new ArrayList<>();
@@ -87,6 +92,11 @@ public class Equipment extends Product {
     @JsonIgnore
     private List<EquipmentToGroup> equipmentToGroupList=new ArrayList<>();
 
+    private LocalDateTime lastSuccessfulSync;
+    private LocalDateTime nextSyncTime;
+    private long syncInterval;
+    private long syncConsecutiveFailedAttempts;
+
 
     @OneToMany(targetEntity = EquipmentToGroup.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
@@ -99,7 +109,6 @@ public class Equipment extends Product {
         return this;
     }
 
-    @JsonView(Views.Full.class)
     public String getSerial() {
         return serial;
     }
@@ -109,7 +118,6 @@ public class Equipment extends Product {
         return this;
     }
 
-    @JsonView(Views.Full.class)
     public LocalDateTime getWarrantyExpiration() {
         return warrantyExpiration;
     }
@@ -143,7 +151,6 @@ public class Equipment extends Product {
     }
 
 
-    @JsonView(Views.Full.class)
     public String getGeoHash1() {
         return geoHash1;
     }
@@ -253,13 +260,79 @@ public class Equipment extends Product {
         return this;
     }
 
-    @JsonView(Views.Full.class)
+
     public boolean isEnable() {
         return enable;
     }
 
     public Equipment setEnable(boolean enable) {
         this.enable = enable;
+        return this;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public Equipment setExternalId(String externalId) {
+        this.externalId = externalId;
+        return this;
+    }
+
+    @ManyToOne(targetEntity = Gateway.class)
+    public Gateway getCommunicationGateway() {
+        return communicationGateway;
+    }
+
+    public Equipment setCommunicationGateway(Gateway communicationGateway) {
+        this.communicationGateway = communicationGateway;
+        return this;
+    }
+
+    @ManyToOne(targetEntity = ApiProvider.class)
+    public ApiProvider getApiProvider() {
+        return apiProvider;
+    }
+
+    public Equipment setApiProvider(ApiProvider apiProvider) {
+        this.apiProvider = apiProvider;
+        return this;
+    }
+
+
+    public LocalDateTime getLastSuccessfulSync() {
+        return lastSuccessfulSync;
+    }
+
+    public Equipment setLastSuccessfulSync(LocalDateTime lastSuccessfulSync) {
+        this.lastSuccessfulSync = lastSuccessfulSync;
+        return this;
+    }
+
+    public LocalDateTime getNextSyncTime() {
+        return nextSyncTime;
+    }
+
+    public Equipment setNextSyncTime(LocalDateTime nextSyncTime) {
+        this.nextSyncTime = nextSyncTime;
+        return this;
+    }
+
+    public long getSyncInterval() {
+        return syncInterval;
+    }
+
+    public Equipment setSyncInterval(long syncInterval) {
+        this.syncInterval = syncInterval;
+        return this;
+    }
+
+    public long getSyncConsecutiveFailedAttempts() {
+        return syncConsecutiveFailedAttempts;
+    }
+
+    public Equipment setSyncConsecutiveFailedAttempts(long syncConsecutiveFailedAttempts) {
+        this.syncConsecutiveFailedAttempts = syncConsecutiveFailedAttempts;
         return this;
     }
 }

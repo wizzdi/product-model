@@ -17,6 +17,12 @@
         <class>com.flexicore.product.model.ProductTypeToProductStatus</class>
         <class>com.flexicore.organization.model.Organization</class>
         <class>com.flexicore.organization.model.Manufacturer</class>
+        <class>com.flexicore.product.model.ApiProvider</class>
+        <class>com.flexicore.product.model.LocationArea</class>
+        <class>com.flexicore.product.model.EquipmentFiltering</class>
+        <class>com.flexicore.product.model.EquipmentGroupFiltering</class>
+        <class>com.flexicore.product.model.InspectEquipmentRequest</class>
+
         <class>com.flexicore.model.Baseclass</class>
         <class>com.flexicore.model.Baselink</class>
 

@@ -1,6 +1,8 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.flexicore.data.jsoncontainers.Views;
 import com.flexicore.model.Baseclass;
 
 import javax.persistence.*;
@@ -17,10 +19,13 @@ public class Product extends Baseclass {
         return s_Singleton;
     }
 
+    @JsonView(Views.Unrefined.class)
     private String sku;
+    @JsonView(Views.Unrefined.class)
     @OneToOne(targetEntity = Model.class)
     private Model model;
 
+    @JsonView(Views.Unrefined.class)
     @ManyToOne(targetEntity = ProductType.class)
     private ProductType productType;
 
@@ -41,6 +46,7 @@ public class Product extends Baseclass {
     }
 
 
+    @JsonView(Views.Unrefined.class)
     public String getSku() {
         return sku;
     }
@@ -51,6 +57,7 @@ public class Product extends Baseclass {
     }
 
     @OneToOne(targetEntity = Model.class)
+    @JsonView(Views.Unrefined.class)
     public Model getModel() {
         return model;
     }
@@ -60,6 +67,7 @@ public class Product extends Baseclass {
         return this;
     }
 
+    @JsonView(Views.Unrefined.class)
     @ManyToOne(targetEntity = ProductType.class)
     public ProductType getProductType() {
         return productType;
