@@ -14,29 +14,42 @@ import java.util.Set;
 public class EquipmentFiltering extends FilteringInformationHolder {
 
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class,cascade = {CascadeType.MERGE,CascadeType.PERSIST},mappedBy = "filteringInformationHolder")
-    private Set<BaseclassIdFiltering> groupIds =new HashSet<>();
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    private Set<BaseclassIdFiltering> groupIds = new HashSet<>();
     @JsonIgnore
     @Transient
-    private List<EquipmentGroup> equipmentGroups=new ArrayList<>();
+    private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
 
     @OneToOne(targetEntity = LocationArea.class)
     private LocationArea locationArea;
-    @OneToOne(targetEntity = BaseclassIdFiltering.class )
+    @OneToOne(targetEntity = BaseclassIdFiltering.class)
     private BaseclassIdFiltering productTypeId;
     @JsonIgnore
     @Transient
     private ProductType productType;
-    @OneToMany(targetEntity = BaseclassIdFiltering.class,cascade = {CascadeType.MERGE,CascadeType.PERSIST},mappedBy = "filteringInformationHolder")
-    private Set<BaseclassIdFiltering> productStatusIds=new HashSet<>();
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    private Set<BaseclassIdFiltering> productStatusIds = new HashSet<>();
     @JsonIgnore
     @Transient
-    private List<ProductStatus> productStatusList=new ArrayList<>();
+    private List<ProductStatus> productStatusList = new ArrayList<>();
 
     private String canonicalClassName;
 
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<BaseclassIdFiltering> equipmentIds = new HashSet<>();
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class,cascade = {CascadeType.MERGE,CascadeType.PERSIST},mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    public Set<BaseclassIdFiltering> getEquipmentIds() {
+        return equipmentIds;
+    }
+
+    public EquipmentFiltering setEquipmentIds(Set<BaseclassIdFiltering> equipmentIds) {
+        this.equipmentIds = equipmentIds;
+        return this;
+    }
+
+
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     public Set<BaseclassIdFiltering> getGroupIds() {
         return groupIds;
     }
@@ -68,7 +81,7 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToOne(targetEntity = BaseclassIdFiltering.class )
+    @OneToOne(targetEntity = BaseclassIdFiltering.class)
     public BaseclassIdFiltering getProductTypeId() {
         return productTypeId;
     }
@@ -89,7 +102,7 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class,cascade = {CascadeType.MERGE,CascadeType.PERSIST},mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     public Set<BaseclassIdFiltering> getProductStatusIds() {
         return productStatusIds;
     }
@@ -118,7 +131,6 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         this.canonicalClassName = canonicalClassName;
         return this;
     }
-
 
 
 }

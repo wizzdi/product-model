@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.model.FileResource;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -76,16 +77,11 @@ public class Equipment extends Product {
     @ManyToOne(targetEntity = ApiProvider.class)
     private ApiProvider apiProvider;
 
-    @OneToMany(targetEntity = GatewayToEquipment.class,mappedBy = "rightside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JsonIgnore
-    private List<GatewayToEquipment> gatewayToEquipmentList=new ArrayList<>();
+    @ManyToOne(targetEntity = FileResource.class)
+    private FileResource icon;
 
 
-    @OneToMany(targetEntity = GatewayToEquipment.class,mappedBy = "rightside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JsonIgnore
-    public List<GatewayToEquipment> getGatewayToEquipmentList() {
-        return gatewayToEquipmentList;
-    }
+
 
 
     @OneToMany(targetEntity = EquipmentToGroup.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
@@ -104,10 +100,7 @@ public class Equipment extends Product {
         return equipmentToGroupList;
     }
 
-    public Equipment setGatewayToEquipmentList(List<GatewayToEquipment> gatewayToEquipmentList) {
-        this.gatewayToEquipmentList = gatewayToEquipmentList;
-        return this;
-    }
+
 
     public String getSerial() {
         return serial;
@@ -335,4 +328,15 @@ public class Equipment extends Product {
         this.syncConsecutiveFailedAttempts = syncConsecutiveFailedAttempts;
         return this;
     }
+
+    @ManyToOne(targetEntity = FileResource.class)
+    public FileResource getIcon() {
+        return icon;
+    }
+
+    public Equipment setIcon(FileResource icon) {
+        this.icon = icon;
+        return this;
+    }
+
 }
