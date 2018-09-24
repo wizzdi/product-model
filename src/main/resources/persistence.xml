@@ -22,6 +22,8 @@
         <class>com.flexicore.product.model.EquipmentFiltering</class>
         <class>com.flexicore.product.model.EquipmentGroupFiltering</class>
         <class>com.flexicore.product.model.InspectEquipmentRequest</class>
+        <class>com.flexicore.product.model.ProductStatusFiltering</class>
+        <class>com.flexicore.product.model.ProductTypeFiltering</class>
 
         <class>com.flexicore.model.Baseclass</class>
         <class>com.flexicore.model.Baselink</class>
