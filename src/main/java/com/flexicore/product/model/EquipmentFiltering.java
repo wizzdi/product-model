@@ -36,6 +36,10 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "productStatusIds",description = "equipment with status",refType = ProductStatus.class)
     private Set<BaseclassIdFiltering> productStatusIds = new HashSet<>();
+
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "gateway ids",description = "gateway ids",refType = Gateway.class)
+    private Set<BaseclassIdFiltering> gatewayIds = new HashSet<>();
     @JsonIgnore
     @Transient
     private List<ProductStatus> productStatusList = new ArrayList<>();
@@ -45,6 +49,10 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @IdRefFieldInfo(displayName = "equipmentIds",description = "specific equipments",refType = Equipment.class)
 
     private Set<BaseclassIdFiltering> equipmentIds = new HashSet<>();
+
+    @JsonIgnore
+    @Transient
+    private List<Gateway> gateways=new ArrayList<>();
 
     @OneToMany(targetEntity = BaseclassIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     public Set<BaseclassIdFiltering> getEquipmentIds() {
@@ -131,6 +139,24 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<BaseclassIdFiltering> getGatewayIds() {
+        return gatewayIds;
+    }
 
+    public EquipmentFiltering setGatewayIds(Set<BaseclassIdFiltering> gatewayIds) {
+        this.gatewayIds = gatewayIds;
+        return this;
+    }
 
+    @JsonIgnore
+    @Transient
+    public List<Gateway> getGateways() {
+        return gateways;
+    }
+
+    public EquipmentFiltering setGateways(List<Gateway> gateways) {
+        this.gateways = gateways;
+        return this;
+    }
 }
