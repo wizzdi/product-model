@@ -1,6 +1,8 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.interfaces.dynamic.FieldInfo;
+import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.model.BaseclassIdFiltering;
 import com.flexicore.model.FilteringInformationHolder;
 
@@ -15,27 +17,33 @@ public class EquipmentFiltering extends FilteringInformationHolder {
 
 
     @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "equipmentFiltering",description = "equipments in equipment groups",refType = EquipmentGroup.class)
+
     private Set<BaseclassIdFiltering> groupIds = new HashSet<>();
     @JsonIgnore
     @Transient
     private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
 
     @OneToOne(targetEntity = LocationArea.class)
+    @FieldInfo(displayName = "locationArea",description = "area to search equipment in")
     private LocationArea locationArea;
     @OneToOne(targetEntity = BaseclassIdFiltering.class)
+    @IdRefFieldInfo(displayName = "productTypeId",description = "product type id",refType = ProductType.class,list = false)
     private BaseclassIdFiltering productTypeId;
     @JsonIgnore
     @Transient
     private ProductType productType;
     @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "productStatusIds",description = "equipment with status",refType = ProductStatus.class)
     private Set<BaseclassIdFiltering> productStatusIds = new HashSet<>();
     @JsonIgnore
     @Transient
     private List<ProductStatus> productStatusList = new ArrayList<>();
 
-    private String canonicalClassName;
 
     @OneToMany(targetEntity = BaseclassIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @IdRefFieldInfo(displayName = "equipmentIds",description = "specific equipments",refType = Equipment.class)
+
     private Set<BaseclassIdFiltering> equipmentIds = new HashSet<>();
 
     @OneToMany(targetEntity = BaseclassIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -123,14 +131,6 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    public String getCanonicalClassName() {
-        return canonicalClassName;
-    }
-
-    public EquipmentFiltering setCanonicalClassName(String canonicalClassName) {
-        this.canonicalClassName = canonicalClassName;
-        return this;
-    }
 
 
 }
