@@ -17,8 +17,7 @@ public class ProductStatus extends Baseclass {
         return s_Singleton;
     }
 
-    @ManyToOne(targetEntity = FileResource.class)
-    private FileResource image;
+
 
     private int priority;
 
@@ -55,15 +54,7 @@ public class ProductStatus extends Baseclass {
         return this;
     }
 
-    @ManyToOne(targetEntity = FileResource.class)
-    public FileResource getImage() {
-        return image;
-    }
 
-    public ProductStatus setImage(FileResource image) {
-        this.image = image;
-        return this;
-    }
 
     public int getPriority() {
         return priority;

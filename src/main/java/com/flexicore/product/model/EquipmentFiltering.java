@@ -3,6 +3,7 @@ package com.flexicore.product.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
+import com.flexicore.interfaces.dynamic.ListFieldInfo;
 import com.flexicore.model.BaseclassIdFiltering;
 import com.flexicore.model.FilteringInformationHolder;
 
@@ -20,6 +21,15 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @IdRefFieldInfo(displayName = "equipmentFiltering",description = "equipments in equipment groups",refType = EquipmentGroup.class)
 
     private Set<BaseclassIdFiltering> groupIds = new HashSet<>();
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @ListFieldInfo(displayName = "typesToReturnIds",description = "list of canonical class names to return")
+
+    private Set<BaseclassIdFiltering> typesToReturnIds = new HashSet<>();
+
+    @Transient
+    @JsonIgnore
+    private List<Class<?>> typesToReturn=new ArrayList<>();
+
     @JsonIgnore
     @Transient
     private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
@@ -157,6 +167,27 @@ public class EquipmentFiltering extends FilteringInformationHolder {
 
     public EquipmentFiltering setGateways(List<Gateway> gateways) {
         this.gateways = gateways;
+        return this;
+    }
+
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<BaseclassIdFiltering> getTypesToReturnIds() {
+        return typesToReturnIds;
+    }
+
+    public EquipmentFiltering setTypesToReturnIds(Set<BaseclassIdFiltering> typesToReturnIds) {
+        this.typesToReturnIds = typesToReturnIds;
+        return this;
+    }
+
+    @Transient
+    @JsonIgnore
+    public List<Class<?>> getTypesToReturn() {
+        return typesToReturn;
+    }
+
+    public EquipmentFiltering setTypesToReturn(List<Class<?>> typesToReturn) {
+        this.typesToReturn = typesToReturn;
         return this;
     }
 }

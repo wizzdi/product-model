@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 @Entity
 public class EquipmentGroupFiltering extends EquipmentFiltering {
 
-    @FieldInfo(displayName = "precision",description = "geo hash precision")
+    @FieldInfo(displayName = "precision",description = "geo hash precision",mandatory = true)
     private int precision;
 
     public int getPrecision() {

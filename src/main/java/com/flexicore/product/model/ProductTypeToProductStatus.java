@@ -1,7 +1,9 @@
 package com.flexicore.product.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.Baselink;
+import com.flexicore.model.FileResource;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,6 +17,9 @@ public class ProductTypeToProductStatus extends Baselink {
         return s_Singleton;
     }
 
+    @ManyToOne(targetEntity = FileResource.class)
+    @JsonIgnore
+    private FileResource image;
 
 
 
@@ -46,5 +51,16 @@ public class ProductTypeToProductStatus extends Baselink {
     @Override
     public void setRightside(Baseclass rightside) {
         super.setRightside(rightside);
+    }
+
+    @ManyToOne(targetEntity = FileResource.class)
+    @JsonIgnore
+    public FileResource getImage() {
+        return image;
+    }
+
+    public ProductTypeToProductStatus setImage(FileResource image) {
+        this.image = image;
+        return this;
     }
 }

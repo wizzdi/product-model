@@ -2,9 +2,11 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import com.flexicore.model.FileResource;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,9 @@ public class ProductType extends Baseclass {
     public static ProductType s() {
         return s_Singleton;
     }
+
+    @ManyToOne(targetEntity = FileResource.class)
+    private FileResource image;
 
 
 
@@ -32,6 +37,16 @@ public class ProductType extends Baseclass {
 
     public ProductType setProductTypeToProductStatusList(List<ProductTypeToProductStatus> productTypeToProductStatusList) {
         this.productTypeToProductStatusList = productTypeToProductStatusList;
+        return this;
+    }
+
+    @ManyToOne(targetEntity = FileResource.class)
+    public FileResource getImage() {
+        return image;
+    }
+
+    public ProductType setImage(FileResource image) {
+        this.image = image;
         return this;
     }
 }

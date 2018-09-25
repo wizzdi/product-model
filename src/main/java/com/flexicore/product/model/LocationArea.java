@@ -1,5 +1,7 @@
 package com.flexicore.product.model;
 
+import com.flexicore.interfaces.dynamic.FieldInfo;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -14,9 +16,16 @@ public class LocationArea {
     @ManyToOne(targetEntity = EquipmentFiltering.class)
     private EquipmentFiltering equipmentFiltering;
 
+    @FieldInfo(displayName = "lonStart",description = "longitude starts")
     private double lonStart;
+    @FieldInfo(displayName = "latStart",description = "latitude starts")
+
     private double latStart;
+    @FieldInfo(displayName = "lonEnd",description = "longitude ends")
+
     private double lonEnd;
+    @FieldInfo(displayName = "latEnd",description = "latitude ends")
+
     private double latEnd;
 
 
