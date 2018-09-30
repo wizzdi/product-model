@@ -2,6 +2,7 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.FileResource;
+import com.flexicore.model.territories.Address;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -70,6 +71,9 @@ public class Equipment extends Product {
     private boolean enable;
 
     private LocalDateTime warrantyExpiration;
+
+    @ManyToOne(targetEntity = Address.class)
+    private Address address;
 
     @ManyToOne(targetEntity = Gateway.class)
     private Gateway communicationGateway;
@@ -339,4 +343,13 @@ public class Equipment extends Product {
         return this;
     }
 
+    @ManyToOne(targetEntity = Address.class)
+    public Address getAddress() {
+        return address;
+    }
+
+    public Equipment setAddress(Address address) {
+        this.address = address;
+        return this;
+    }
 }
