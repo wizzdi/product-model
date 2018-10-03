@@ -44,6 +44,7 @@ public class Equipment extends Product {
     private double lon;
     private String serial;
     private String externalId;
+    private String nameHe;
 
     private String geoHash1;
     @JsonIgnore
@@ -350,6 +351,15 @@ public class Equipment extends Product {
 
     public Equipment setAddress(Address address) {
         this.address = address;
+        return this;
+    }
+
+    public String getNameHe() {
+        return nameHe;
+    }
+
+    public Equipment setNameHe(String nameHe) {
+        this.nameHe = nameHe;
         return this;
     }
 }
