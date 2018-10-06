@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.flexicore.interfaces.dynamic.FieldInfo;
+import com.flexicore.model.Baseclass;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +13,9 @@ public class LocationArea {
     @Id
     private String id;
 
+    public LocationArea() {
+        this.id= Baseclass.getBase64ID();
+    }
 
     @ManyToOne(targetEntity = EquipmentFiltering.class)
     private EquipmentFiltering equipmentFiltering;
@@ -83,5 +87,9 @@ public class LocationArea {
     public LocationArea setEquipmentFiltering(EquipmentFiltering equipmentFiltering) {
         this.equipmentFiltering = equipmentFiltering;
         return this;
+    }
+
+    public void prepareForSave(EquipmentFiltering equipmentFiltering) {
+        this.equipmentFiltering=equipmentFiltering;
     }
 }

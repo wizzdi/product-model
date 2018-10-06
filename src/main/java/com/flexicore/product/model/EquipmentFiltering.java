@@ -6,6 +6,8 @@ import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.interfaces.dynamic.ListFieldInfo;
 import com.flexicore.model.BaseclassIdFiltering;
 import com.flexicore.model.FilteringInformationHolder;
+import com.flexicore.model.territories.Neighbourhood;
+import com.flexicore.model.territories.Street;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -40,6 +42,20 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @OneToOne(targetEntity = BaseclassIdFiltering.class)
     @IdRefFieldInfo(displayName = "productTypeId",description = "product type id",refType = ProductType.class,list = false)
     private BaseclassIdFiltering productTypeId;
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "neighbourhoods",description = "neighbourhood ids",refType = Neighbourhood.class)
+    private Set<BaseclassIdFiltering> neighbourhoodIds=new HashSet<>();
+
+    @JsonIgnore
+    private List<Neighbourhood> neighbourhoods=new ArrayList<>();
+
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "streetIds",description = "street ids",refType = Street.class)
+    private Set<BaseclassIdFiltering> streetIds=new HashSet<>();
+
+    @JsonIgnore
+    private List<Street> streets=new ArrayList<>();
+
     @JsonIgnore
     @Transient
     private ProductType productType;
@@ -180,6 +196,28 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "neighbourhoods",description = "neighbourhood id",refType = Neighbourhood.class)
+    public Set<BaseclassIdFiltering> getNeighbourhoodIds() {
+        return neighbourhoodIds;
+    }
+
+    public EquipmentFiltering setNeighbourhoodIds(Set<BaseclassIdFiltering> neighbourhoodIds) {
+        this.neighbourhoodIds = neighbourhoodIds;
+        return this;
+    }
+
+    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "streetIds",description = "street ids",refType = Street.class)
+    public Set<BaseclassIdFiltering> getStreetIds() {
+        return streetIds;
+    }
+
+    public EquipmentFiltering setStreetIds(Set<BaseclassIdFiltering> streetIds) {
+        this.streetIds = streetIds;
+        return this;
+    }
+
     @Transient
     @JsonIgnore
     public List<Class<?>> getTypesToReturn() {
@@ -190,4 +228,57 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         this.typesToReturn = typesToReturn;
         return this;
     }
+
+    @JsonIgnore
+    public List<Neighbourhood> getNeighbourhoods() {
+        return neighbourhoods;
+    }
+
+    public EquipmentFiltering setNeighbourhoods(List<Neighbourhood> neighbourhoods) {
+        this.neighbourhoods = neighbourhoods;
+        return this;
+    }
+
+    @JsonIgnore
+    public List<Street> getStreets() {
+        return streets;
+    }
+
+    public EquipmentFiltering setStreets(List<Street> streets) {
+        this.streets = streets;
+        return this;
+    }
+
+    @Override
+    public void prepareForSave() {
+        super.prepareForSave();
+        for (BaseclassIdFiltering groupId : groupIds) {
+            groupId.prepareForSave(this);
+        }
+        for (BaseclassIdFiltering typesToReturnId : typesToReturnIds) {
+            typesToReturnId.prepareForSave(this);
+        }
+        for (BaseclassIdFiltering productStatusId : productStatusIds) {
+            productStatusId.prepareForSave(this);
+        }
+        for (BaseclassIdFiltering gatewayId : gatewayIds) {
+            gatewayId.prepareForSave(this);
+        }
+        for (BaseclassIdFiltering equipmentId : equipmentIds) {
+            equipmentId.prepareForSave(this);
+        }
+        for (BaseclassIdFiltering neighbourhoodId : neighbourhoodIds) {
+            neighbourhoodId.prepareForSave(this);
+        }
+        for (BaseclassIdFiltering streetId : streetIds) {
+            streetId.prepareForSave(this);
+        }
+        if(locationArea!=null){
+            locationArea.prepareForSave(this);
+
+        }
+
+    }
+
+
 }

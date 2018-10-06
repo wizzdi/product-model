@@ -44,4 +44,12 @@ public class GroupFiltering extends FilteringInformationHolder {
         this.equipmentGroups = equipmentGroups;
         return this;
     }
+
+    @Override
+    public void prepareForSave() {
+        super.prepareForSave();
+        for (BaseclassIdFiltering groupId : groupIds) {
+            groupId.prepareForSave(this);
+        }
+    }
 }

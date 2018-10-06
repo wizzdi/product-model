@@ -39,4 +39,13 @@ public class ProductStatusFiltering extends FilteringInformationHolder {
         this.productType = productType;
         return this;
     }
+
+    @Override
+    public void prepareForSave() {
+        super.prepareForSave();
+        if(productTypeId!=null){
+            productTypeId.prepareForSave(this);
+
+        }
+    }
 }

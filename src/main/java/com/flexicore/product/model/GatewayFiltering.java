@@ -27,4 +27,12 @@ public class GatewayFiltering extends EquipmentFiltering {
         this.consoleIds = consoleIds;
         return this;
     }
+
+    @Override
+    public void prepareForSave() {
+        super.prepareForSave();
+        for (BaseclassLongFiltering consoleId : consoleIds) {
+            consoleId.prepareForSave(this);
+        }
+    }
 }
