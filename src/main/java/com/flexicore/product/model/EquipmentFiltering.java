@@ -47,6 +47,7 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     private Set<BaseclassIdFiltering> neighbourhoodIds=new HashSet<>();
 
     @JsonIgnore
+    @Transient
     private List<Neighbourhood> neighbourhoods=new ArrayList<>();
 
     @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
@@ -54,6 +55,7 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     private Set<BaseclassIdFiltering> streetIds=new HashSet<>();
 
     @JsonIgnore
+    @Transient
     private List<Street> streets=new ArrayList<>();
 
     @JsonIgnore
@@ -230,6 +232,8 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     }
 
     @JsonIgnore
+    @Transient
+
     public List<Neighbourhood> getNeighbourhoods() {
         return neighbourhoods;
     }
@@ -240,9 +244,11 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     }
 
     @JsonIgnore
+    @Transient
     public List<Street> getStreets() {
         return streets;
     }
+
 
     public EquipmentFiltering setStreets(List<Street> streets) {
         this.streets = streets;

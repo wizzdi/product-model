@@ -25,9 +25,12 @@
         <class>com.flexicore.product.model.ProductStatusFiltering</class>
         <class>com.flexicore.product.model.ProductTypeFiltering</class>
         <class>com.flexicore.product.model.NeighbourhoodFiltering</class>
+        <class>com.flexicore.model.territories.Neighbourhood</class>
         <class>com.flexicore.product.model.StreetFiltering</class>
+        <class>com.flexicore.model.territories.Street</class>
         <class>com.flexicore.model.Baseclass</class>
         <class>com.flexicore.model.Baselink</class>
+        <class>com.flexicore.model.FileResource</class>
 
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
