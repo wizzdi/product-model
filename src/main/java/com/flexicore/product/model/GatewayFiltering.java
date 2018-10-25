@@ -2,7 +2,6 @@ package com.flexicore.product.model;
 
 
 import com.flexicore.interfaces.dynamic.ListFieldInfo;
-import com.flexicore.model.BaseclassIdFiltering;
 import com.flexicore.model.BaseclassLongFiltering;
 
 import javax.persistence.CascadeType;
@@ -14,16 +13,16 @@ import java.util.Set;
 @Entity
 public class GatewayFiltering extends EquipmentFiltering {
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = GatewayConsoleIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @ListFieldInfo(description = "consoleIds",displayName = "list of console ids",listType = BaseclassLongFiltering.class)
-    private Set<BaseclassLongFiltering> consoleIds=new HashSet<>();
+    private Set<GatewayConsoleIdFiltering> consoleIds=new HashSet<>();
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    public Set<BaseclassLongFiltering> getConsoleIds() {
+    @OneToMany(targetEntity = GatewayConsoleIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<GatewayConsoleIdFiltering> getConsoleIds() {
         return consoleIds;
     }
 
-    public GatewayFiltering setConsoleIds(Set<BaseclassLongFiltering> consoleIds) {
+    public GatewayFiltering setConsoleIds(Set<GatewayConsoleIdFiltering> consoleIds) {
         this.consoleIds = consoleIds;
         return this;
     }
@@ -31,7 +30,7 @@ public class GatewayFiltering extends EquipmentFiltering {
     @Override
     public void prepareForSave() {
         super.prepareForSave();
-        for (BaseclassLongFiltering consoleId : consoleIds) {
+        for (GatewayConsoleIdFiltering consoleId : consoleIds) {
             consoleId.prepareForSave(this);
         }
     }

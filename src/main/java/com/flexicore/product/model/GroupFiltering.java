@@ -2,7 +2,6 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
-import com.flexicore.model.BaseclassIdFiltering;
 import com.flexicore.model.FilteringInformationHolder;
 
 import javax.persistence.CascadeType;
@@ -17,19 +16,19 @@ import java.util.Set;
 @Entity
 public class GroupFiltering extends FilteringInformationHolder {
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "groupIds",description = "equipment group ids",refType = EquipmentGroup.class)
-    private Set<BaseclassIdFiltering> groupIds = new HashSet<>();
+    private Set<GroupIdFiltering> groupIds = new HashSet<>();
     @JsonIgnore
     @Transient
     private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    public Set<BaseclassIdFiltering> getGroupIds() {
+    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<GroupIdFiltering> getGroupIds() {
         return groupIds;
     }
 
-    public GroupFiltering setGroupIds(Set<BaseclassIdFiltering> groupIds) {
+    public GroupFiltering setGroupIds(Set<GroupIdFiltering> groupIds) {
         this.groupIds = groupIds;
         return this;
     }
@@ -48,7 +47,7 @@ public class GroupFiltering extends FilteringInformationHolder {
     @Override
     public void prepareForSave() {
         super.prepareForSave();
-        for (BaseclassIdFiltering groupId : groupIds) {
+        for (GroupIdFiltering groupId : groupIds) {
             groupId.prepareForSave(this);
         }
     }

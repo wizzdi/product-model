@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.interfaces.dynamic.ListFieldInfo;
-import com.flexicore.model.BaseclassIdFiltering;
 import com.flexicore.model.FilteringInformationHolder;
 import com.flexicore.model.territories.Neighbourhood;
 import com.flexicore.model.territories.Street;
@@ -19,14 +18,14 @@ import java.util.Set;
 public class EquipmentFiltering extends FilteringInformationHolder {
 
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "equipmentFiltering",description = "equipments in equipment groups",refType = EquipmentGroup.class)
 
-    private Set<BaseclassIdFiltering> groupIds = new HashSet<>();
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    private Set<GroupIdFiltering> groupIds = new HashSet<>();
+    @OneToMany(targetEntity = TypeToReturnFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @ListFieldInfo(displayName = "typesToReturnIds",description = "list of canonical class names to return")
 
-    private Set<BaseclassIdFiltering> typesToReturnIds = new HashSet<>();
+    private Set<TypeToReturnFiltering> typesToReturnIds = new HashSet<>();
 
     @Transient
     @JsonIgnore
@@ -39,20 +38,20 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @OneToOne(targetEntity = LocationArea.class)
     @FieldInfo(displayName = "locationArea",description = "area to search equipment in")
     private LocationArea locationArea;
-    @OneToOne(targetEntity = BaseclassIdFiltering.class)
+    @OneToOne(targetEntity = ProductTypeIdFiltering.class)
     @IdRefFieldInfo(displayName = "productTypeId",description = "product type id",refType = ProductType.class,list = false)
-    private BaseclassIdFiltering productTypeId;
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    private ProductTypeIdFiltering productTypeId;
+    @OneToMany(targetEntity = NeighbourhoodIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "neighbourhoods",description = "neighbourhood ids",refType = Neighbourhood.class)
-    private Set<BaseclassIdFiltering> neighbourhoodIds=new HashSet<>();
+    private Set<NeighbourhoodIdFiltering> neighbourhoodIds=new HashSet<>();
 
     @JsonIgnore
     @Transient
     private List<Neighbourhood> neighbourhoods=new ArrayList<>();
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = StreetIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "streetIds",description = "street ids",refType = Street.class)
-    private Set<BaseclassIdFiltering> streetIds=new HashSet<>();
+    private Set<StreetIdFiltering> streetIds=new HashSet<>();
 
     @JsonIgnore
     @Transient
@@ -61,44 +60,44 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @JsonIgnore
     @Transient
     private ProductType productType;
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = ProductStatusIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "productStatusIds",description = "equipment with status",refType = ProductStatus.class)
-    private Set<BaseclassIdFiltering> productStatusIds = new HashSet<>();
+    private Set<ProductStatusIdFiltering> productStatusIds = new HashSet<>();
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = GatewayIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "gateway ids",description = "gateway ids",refType = Gateway.class)
-    private Set<BaseclassIdFiltering> gatewayIds = new HashSet<>();
+    private Set<GatewayIdFiltering> gatewayIds = new HashSet<>();
     @JsonIgnore
     @Transient
     private List<ProductStatus> productStatusList = new ArrayList<>();
 
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(targetEntity = EquipmentIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @IdRefFieldInfo(displayName = "equipmentIds",description = "specific equipments",refType = Equipment.class)
 
-    private Set<BaseclassIdFiltering> equipmentIds = new HashSet<>();
+    private Set<EquipmentIdFiltering> equipmentIds = new HashSet<>();
 
     @JsonIgnore
     @Transient
     private List<Gateway> gateways=new ArrayList<>();
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    public Set<BaseclassIdFiltering> getEquipmentIds() {
+    @OneToMany(targetEntity = EquipmentIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    public Set<EquipmentIdFiltering> getEquipmentIds() {
         return equipmentIds;
     }
 
-    public EquipmentFiltering setEquipmentIds(Set<BaseclassIdFiltering> equipmentIds) {
+    public EquipmentFiltering setEquipmentIds(Set<EquipmentIdFiltering> equipmentIds) {
         this.equipmentIds = equipmentIds;
         return this;
     }
 
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    public Set<BaseclassIdFiltering> getGroupIds() {
+    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<GroupIdFiltering> getGroupIds() {
         return groupIds;
     }
 
-    public EquipmentFiltering setGroupIds(Set<BaseclassIdFiltering> groupIds) {
+    public EquipmentFiltering setGroupIds(Set<GroupIdFiltering> groupIds) {
         this.groupIds = groupIds;
         return this;
     }
@@ -125,12 +124,12 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToOne(targetEntity = BaseclassIdFiltering.class)
-    public BaseclassIdFiltering getProductTypeId() {
+    @OneToOne(targetEntity = ProductTypeIdFiltering.class)
+    public ProductTypeIdFiltering getProductTypeId() {
         return productTypeId;
     }
 
-    public EquipmentFiltering setProductTypeId(BaseclassIdFiltering productTypeId) {
+    public EquipmentFiltering setProductTypeId(ProductTypeIdFiltering productTypeId) {
         this.productTypeId = productTypeId;
         return this;
     }
@@ -146,12 +145,12 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    public Set<BaseclassIdFiltering> getProductStatusIds() {
+    @OneToMany(targetEntity = ProductStatusIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<ProductStatusIdFiltering> getProductStatusIds() {
         return productStatusIds;
     }
 
-    public EquipmentFiltering setProductStatusIds(Set<BaseclassIdFiltering> productStatusIds) {
+    public EquipmentFiltering setProductStatusIds(Set<ProductStatusIdFiltering> productStatusIds) {
         this.productStatusIds = productStatusIds;
         return this;
     }
@@ -167,12 +166,12 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    public Set<BaseclassIdFiltering> getGatewayIds() {
+    @OneToMany(targetEntity = GatewayIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<GatewayIdFiltering> getGatewayIds() {
         return gatewayIds;
     }
 
-    public EquipmentFiltering setGatewayIds(Set<BaseclassIdFiltering> gatewayIds) {
+    public EquipmentFiltering setGatewayIds(Set<GatewayIdFiltering> gatewayIds) {
         this.gatewayIds = gatewayIds;
         return this;
     }
@@ -188,34 +187,34 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    public Set<BaseclassIdFiltering> getTypesToReturnIds() {
+    @OneToMany(targetEntity = TypeToReturnFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    public Set<TypeToReturnFiltering> getTypesToReturnIds() {
         return typesToReturnIds;
     }
 
-    public EquipmentFiltering setTypesToReturnIds(Set<BaseclassIdFiltering> typesToReturnIds) {
+    public EquipmentFiltering setTypesToReturnIds(Set<TypeToReturnFiltering> typesToReturnIds) {
         this.typesToReturnIds = typesToReturnIds;
         return this;
     }
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = NeighbourhoodIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "neighbourhoods",description = "neighbourhood id",refType = Neighbourhood.class)
-    public Set<BaseclassIdFiltering> getNeighbourhoodIds() {
+    public Set<NeighbourhoodIdFiltering> getNeighbourhoodIds() {
         return neighbourhoodIds;
     }
 
-    public EquipmentFiltering setNeighbourhoodIds(Set<BaseclassIdFiltering> neighbourhoodIds) {
+    public EquipmentFiltering setNeighbourhoodIds(Set<NeighbourhoodIdFiltering> neighbourhoodIds) {
         this.neighbourhoodIds = neighbourhoodIds;
         return this;
     }
 
-    @OneToMany(targetEntity = BaseclassIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = StreetIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "streetIds",description = "street ids",refType = Street.class)
-    public Set<BaseclassIdFiltering> getStreetIds() {
+    public Set<StreetIdFiltering> getStreetIds() {
         return streetIds;
     }
 
-    public EquipmentFiltering setStreetIds(Set<BaseclassIdFiltering> streetIds) {
+    public EquipmentFiltering setStreetIds(Set<StreetIdFiltering> streetIds) {
         this.streetIds = streetIds;
         return this;
     }
@@ -258,25 +257,25 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @Override
     public void prepareForSave() {
         super.prepareForSave();
-        for (BaseclassIdFiltering groupId : groupIds) {
+        for (GroupIdFiltering groupId : groupIds) {
             groupId.prepareForSave(this);
         }
-        for (BaseclassIdFiltering typesToReturnId : typesToReturnIds) {
+        for (TypeToReturnFiltering typesToReturnId : typesToReturnIds) {
             typesToReturnId.prepareForSave(this);
         }
-        for (BaseclassIdFiltering productStatusId : productStatusIds) {
+        for (ProductStatusIdFiltering productStatusId : productStatusIds) {
             productStatusId.prepareForSave(this);
         }
-        for (BaseclassIdFiltering gatewayId : gatewayIds) {
+        for (GatewayIdFiltering gatewayId : gatewayIds) {
             gatewayId.prepareForSave(this);
         }
-        for (BaseclassIdFiltering equipmentId : equipmentIds) {
+        for (EquipmentIdFiltering equipmentId : equipmentIds) {
             equipmentId.prepareForSave(this);
         }
-        for (BaseclassIdFiltering neighbourhoodId : neighbourhoodIds) {
+        for (NeighbourhoodIdFiltering neighbourhoodId : neighbourhoodIds) {
             neighbourhoodId.prepareForSave(this);
         }
-        for (BaseclassIdFiltering streetId : streetIds) {
+        for (StreetIdFiltering streetId : streetIds) {
             streetId.prepareForSave(this);
         }
         if(locationArea!=null){
