@@ -24,6 +24,14 @@ public class GroupFiltering extends FilteringInformationHolder {
     private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
 
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "equipmentIds",description = "equipment ids",refType = Equipment.class)
+    private List<EquipmentIdFiltering> equipmentIdFilterings=new ArrayList<>();
+
+    @JsonIgnore
+    @Transient
+    private List<Equipment> equipment=new ArrayList<>();
+
+    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     public Set<GroupIdFiltering> getGroupIds() {
         return groupIds;
     }
@@ -44,11 +52,36 @@ public class GroupFiltering extends FilteringInformationHolder {
         return this;
     }
 
+    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "equipmentIds",description = "equipment ids",refType = Equipment.class)
+    public List<EquipmentIdFiltering> getEquipmentIdFilterings() {
+        return equipmentIdFilterings;
+    }
+
+    public GroupFiltering setEquipmentIdFilterings(List<EquipmentIdFiltering> equipmentIdFilterings) {
+        this.equipmentIdFilterings = equipmentIdFilterings;
+        return this;
+    }
+
+    @JsonIgnore
+    @Transient
+    public List<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    public GroupFiltering setEquipment(List<Equipment> equipment) {
+        this.equipment = equipment;
+        return this;
+    }
+
     @Override
     public void prepareForSave() {
         super.prepareForSave();
         for (GroupIdFiltering groupId : groupIds) {
             groupId.prepareForSave(this);
+        }
+        for (EquipmentIdFiltering equipmentIdFiltering : equipmentIdFilterings) {
+            equipmentIdFiltering.prepareForSave(this);
         }
     }
 }
