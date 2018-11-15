@@ -29,7 +29,7 @@ public class GroupFiltering extends FilteringInformationHolder {
 
     @JsonIgnore
     @Transient
-    private List<Equipment> equipment=new ArrayList<>();
+    private List<? extends Equipment> equipment=new ArrayList<>();
 
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     public Set<GroupIdFiltering> getGroupIds() {
@@ -65,11 +65,11 @@ public class GroupFiltering extends FilteringInformationHolder {
 
     @JsonIgnore
     @Transient
-    public List<Equipment> getEquipment() {
+    public List<? extends  Equipment> getEquipment() {
         return equipment;
     }
 
-    public GroupFiltering setEquipment(List<Equipment> equipment) {
+    public GroupFiltering setEquipment(List<? extends  Equipment> equipment) {
         this.equipment = equipment;
         return this;
     }
