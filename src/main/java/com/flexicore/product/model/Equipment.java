@@ -71,6 +71,11 @@ public class Equipment extends Product {
     private String geoHash12;
     private boolean enable;
 
+    private String floorForEquipment;
+    private double x;
+    private double y;
+    private String humanReadableLocation;
+
     private LocalDateTime warrantyExpiration;
 
     @ManyToOne(targetEntity = Address.class)
@@ -360,6 +365,42 @@ public class Equipment extends Product {
 
     public Equipment setNameHe(String nameHe) {
         this.nameHe = nameHe;
+        return this;
+    }
+
+    public String getFloorForEquipment() {
+        return floorForEquipment;
+    }
+
+    public Equipment setFloorForEquipment(String floorForEquipment) {
+        this.floorForEquipment = floorForEquipment;
+        return this;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public Equipment setX(double x) {
+        this.x = x;
+        return this;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public Equipment setY(double y) {
+        this.y = y;
+        return this;
+    }
+
+    public String getHumanReadableLocation() {
+        return humanReadableLocation;
+    }
+
+    public Equipment setHumanReadableLocation(String humanReadableLocation) {
+        this.humanReadableLocation = humanReadableLocation;
         return this;
     }
 }
