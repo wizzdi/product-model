@@ -15,8 +15,8 @@ public class Gateway extends Equipment {
     private LocalDateTime lastSucessfulConnction;
     private String ip;
     private int port;
-    private String username;
-    private String password;
+    private String encryptedUsername;
+    private String encryptedPassword;
 
     public LocalDateTime getLastSucessfulConnction() {
         return lastSucessfulConnction;
@@ -45,21 +45,21 @@ public class Gateway extends Equipment {
         return this;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEncryptedUsername() {
+        return encryptedUsername;
     }
 
-    public Gateway setUsername(String username) {
-        this.username = username;
+    public Gateway setEncryptedUsername(String encryptedUsername) {
+        this.encryptedUsername = encryptedUsername;
         return this;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEncryptedPassword() {
+        return encryptedPassword;
     }
 
-    public Gateway setPassword(String password) {
-        this.password = password;
+    public Gateway setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
         return this;
     }
 }

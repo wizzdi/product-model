@@ -35,12 +35,13 @@
         <class>com.flexicore.product.model.TypeToReturnFiltering</class>
         <class>com.flexicore.product.model.StreetIdFiltering</class>
         <class>com.flexicore.product.model.ProductTypeIdFiltering</class>
-<class>com.flexicore.product.model.NeighbourhoodIdFiltering</class>
+        <class>com.flexicore.product.model.NeighbourhoodIdFiltering</class>
         <class>com.flexicore.product.model.ProductStatusIdFiltering</class>
         <class>com.flexicore.product.model.GroupIdFiltering</class>
         <class>com.flexicore.product.model.GatewayIdFiltering</class>
         <class>com.flexicore.product.model.GatewayConsoleIdFiltering</class>
         <class>com.flexicore.product.model.EquipmentIdFiltering</class>
+        <class>com.flexicore.product.model.FlexiCoreGateway</class>
 
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
