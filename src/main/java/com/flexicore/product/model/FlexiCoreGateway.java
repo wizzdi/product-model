@@ -3,7 +3,7 @@ package com.flexicore.product.model;
 import javax.persistence.Entity;
 
 @Entity
-public class FlexiCoreGateway extends Equipment {
+public class FlexiCoreGateway extends Gateway {
     private static FlexiCoreGateway s_Singleton=new FlexiCoreGateway();
     public  static FlexiCoreGateway s() {return s_Singleton;}
 
