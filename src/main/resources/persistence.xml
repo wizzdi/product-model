@@ -41,7 +41,10 @@
         <class>com.flexicore.product.model.GatewayIdFiltering</class>
         <class>com.flexicore.product.model.GatewayConsoleIdFiltering</class>
         <class>com.flexicore.product.model.EquipmentIdFiltering</class>
+        <class>com.flexicore.product.model.GatewayFiltering</class>
         <class>com.flexicore.product.model.FlexiCoreGateway</class>
+        <class>com.flexicore.product.model.FlexiCoreGatewayFiltering</class>
+
 
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
