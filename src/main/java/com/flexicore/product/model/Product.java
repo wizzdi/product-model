@@ -29,6 +29,7 @@ public class Product extends Baseclass {
     @ManyToOne(targetEntity = ProductType.class)
     private ProductType productType;
 
+
     @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
     @JsonIgnore
     private List<ProductToStatus> productToStatusList=new ArrayList<>();

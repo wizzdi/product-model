@@ -6,7 +6,7 @@
 
     <groupId>com.flexicore</groupId>
     <artifactId>product-model</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <properties>
         <version.wildfly.bom>10.0.0.Final</version.wildfly.bom>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -67,6 +67,13 @@
             <groupId>com.flexicore</groupId>
             <artifactId>flexicore-territories-model</artifactId>
             <version>1.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flexicore</groupId>
+            <artifactId>organization-model</artifactId>
+            <version>1.0.0</version>
             <scope>provided</scope>
         </dependency>
 
