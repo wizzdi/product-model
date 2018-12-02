@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class EquipmentFiltering extends FilteringInformationHolder {
+public class EquipmentFiltering extends ProductFiltering {
 
 
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
@@ -38,9 +38,7 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @OneToOne(targetEntity = LocationArea.class)
     @FieldInfo(displayName = "locationArea",description = "area to search equipment in")
     private LocationArea locationArea;
-    @OneToOne(targetEntity = ProductTypeIdFiltering.class)
-    @IdRefFieldInfo(displayName = "productTypeId",description = "product type id",refType = ProductType.class,list = false)
-    private ProductTypeIdFiltering productTypeId;
+
     @OneToMany(targetEntity = NeighbourhoodIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "neighbourhoods",description = "neighbourhood ids",refType = Neighbourhood.class)
     private Set<NeighbourhoodIdFiltering> neighbourhoodIds=new HashSet<>();
@@ -60,9 +58,6 @@ public class EquipmentFiltering extends FilteringInformationHolder {
     @JsonIgnore
     @Transient
     private ProductType productType;
-    @OneToMany(targetEntity = ProductStatusIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    @IdRefFieldInfo(displayName = "productStatusIds",description = "equipment with status",refType = ProductStatus.class)
-    private Set<ProductStatusIdFiltering> productStatusIds = new HashSet<>();
 
     @OneToMany(targetEntity = GatewayIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "gateway ids",description = "gateway ids",refType = Gateway.class)
@@ -124,15 +119,6 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToOne(targetEntity = ProductTypeIdFiltering.class)
-    public ProductTypeIdFiltering getProductTypeId() {
-        return productTypeId;
-    }
-
-    public EquipmentFiltering setProductTypeId(ProductTypeIdFiltering productTypeId) {
-        this.productTypeId = productTypeId;
-        return this;
-    }
 
     @JsonIgnore
     @Transient
@@ -145,15 +131,7 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToMany(targetEntity = ProductStatusIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    public Set<ProductStatusIdFiltering> getProductStatusIds() {
-        return productStatusIds;
-    }
 
-    public EquipmentFiltering setProductStatusIds(Set<ProductStatusIdFiltering> productStatusIds) {
-        this.productStatusIds = productStatusIds;
-        return this;
-    }
 
     @JsonIgnore
     @Transient
@@ -262,9 +240,6 @@ public class EquipmentFiltering extends FilteringInformationHolder {
         }
         for (TypeToReturnFiltering typesToReturnId : typesToReturnIds) {
             typesToReturnId.prepareForSave(this);
-        }
-        for (ProductStatusIdFiltering productStatusId : productStatusIds) {
-            productStatusId.prepareForSave(this);
         }
         for (GatewayIdFiltering gatewayId : gatewayIds) {
             gatewayId.prepareForSave(this);

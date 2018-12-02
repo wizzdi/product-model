@@ -45,6 +45,7 @@
         <class>com.flexicore.product.model.FlexiCoreGateway</class>
         <class>com.flexicore.product.model.FlexiCoreGatewayFiltering</class>
         <class>com.flexicore.product.model.ProductToSite</class>
+        <class>com.flexicore.product.model.ProductFiltering</class>
 
 
 
