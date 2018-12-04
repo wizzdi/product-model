@@ -49,6 +49,7 @@
 
 
 
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
 

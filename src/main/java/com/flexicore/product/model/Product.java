@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.flexicore.data.jsoncontainers.Views;
 import com.flexicore.model.Baseclass;
+import com.flexicore.organization.model.SupplierToProduct;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -33,6 +34,10 @@ public class Product extends Baseclass {
     @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
     @JsonIgnore
     private List<ProductToStatus> productToStatusList=new ArrayList<>();
+
+    @OneToMany(targetEntity = SupplierToProduct.class,mappedBy = "rightside")
+    @JsonIgnore
+    private List<SupplierToProduct> supplierToProducts=new ArrayList<>();
 
 
     @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
@@ -76,6 +81,17 @@ public class Product extends Baseclass {
 
     public Product setProductType(ProductType productType) {
         this.productType = productType;
+        return this;
+    }
+
+    @OneToMany(targetEntity = SupplierToProduct.class,mappedBy = "rightside")
+    @JsonIgnore
+    public List<SupplierToProduct> getSupplierToProducts() {
+        return supplierToProducts;
+    }
+
+    public Product setSupplierToProducts(List<SupplierToProduct> supplierToProducts) {
+        this.supplierToProducts = supplierToProducts;
         return this;
     }
 }
