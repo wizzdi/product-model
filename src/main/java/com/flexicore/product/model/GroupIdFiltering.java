@@ -5,7 +5,7 @@ import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.CategoryIdFiltering;
 import com.flexicore.model.FilteringInformationHolder;
-import io.swagger.annotations.ApiModelProperty;
+//import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
@@ -25,7 +25,7 @@ public class GroupIdFiltering {
     public GroupIdFiltering() {
     }
 
-    @ApiModelProperty("Id of the Baseclass")
+    //@ApiModelProperty("Id of the Baseclass")
     public String getId() {
         return id;
     }

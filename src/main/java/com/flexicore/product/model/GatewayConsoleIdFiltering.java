@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FilteringInformationHolder;
-import io.swagger.annotations.ApiModelProperty;
+//import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,7 +26,7 @@ public class GatewayConsoleIdFiltering {
     public GatewayConsoleIdFiltering() {
     }
 
-    @ApiModelProperty("Id of the Baseclass")
+    //@ApiModelProperty("Id of the Baseclass")
     public long getId() {
         return id;
     }

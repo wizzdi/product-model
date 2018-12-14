@@ -8,6 +8,7 @@ public class FlexiCoreGateway extends Gateway {
     public  static FlexiCoreGateway s() {return s_Singleton;}
 
    private String communicationWebSocketUrl;
+    private String baseApiUrl;
 
 
     public String getCommunicationWebSocketUrl() {
@@ -18,5 +19,15 @@ public class FlexiCoreGateway extends Gateway {
         this.communicationWebSocketUrl = communicationWebSocketUrl;
         return this;
     }
+
+    public String getBaseApiUrl() {
+        return baseApiUrl;
+    }
+
+    public FlexiCoreGateway setBaseApiUrl(String baseApiUrl) {
+        this.baseApiUrl = baseApiUrl;
+        return this;
+    }
+
 
 }

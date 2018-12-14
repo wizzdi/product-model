@@ -1,5 +1,7 @@
 package com.flexicore.product.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
@@ -15,7 +17,8 @@ public class Gateway extends Equipment {
     private LocalDateTime lastSucessfulConnction;
     private String ip;
     private int port;
-    private String encryptedUsername;
+    private String username;
+    @JsonIgnore
     private String encryptedPassword;
 
     public LocalDateTime getLastSucessfulConnction() {
@@ -45,12 +48,12 @@ public class Gateway extends Equipment {
         return this;
     }
 
-    public String getEncryptedUsername() {
-        return encryptedUsername;
+    public String getUsername() {
+        return username;
     }
 
-    public Gateway setEncryptedUsername(String encryptedUsername) {
-        this.encryptedUsername = encryptedUsername;
+    public Gateway setUsername(String username) {
+        this.username = username;
         return this;
     }
 
@@ -62,4 +65,6 @@ public class Gateway extends Equipment {
         this.encryptedPassword = encryptedPassword;
         return this;
     }
+
+
 }
