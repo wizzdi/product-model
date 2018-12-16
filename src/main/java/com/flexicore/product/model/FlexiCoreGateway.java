@@ -1,33 +1,26 @@
 package com.flexicore.product.model;
 
+import com.flexicore.model.FlexiCoreServer;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class FlexiCoreGateway extends Gateway {
     private static FlexiCoreGateway s_Singleton=new FlexiCoreGateway();
     public  static FlexiCoreGateway s() {return s_Singleton;}
 
-   private String communicationWebSocketUrl;
-    private String baseApiUrl;
 
+    @OneToOne(targetEntity = FlexiCoreServer.class)
+    private FlexiCoreServer flexiCoreServer;
 
-    public String getCommunicationWebSocketUrl() {
-        return communicationWebSocketUrl;
+    @OneToOne(targetEntity = FlexiCoreServer.class)
+    public FlexiCoreServer getFlexiCoreServer() {
+        return flexiCoreServer;
     }
 
-    public FlexiCoreGateway setCommunicationWebSocketUrl(String communicationWebSocketUrl) {
-        this.communicationWebSocketUrl = communicationWebSocketUrl;
+    public FlexiCoreGateway setFlexiCoreServer(FlexiCoreServer flexiCoreServer) {
+        this.flexiCoreServer = flexiCoreServer;
         return this;
     }
-
-    public String getBaseApiUrl() {
-        return baseApiUrl;
-    }
-
-    public FlexiCoreGateway setBaseApiUrl(String baseApiUrl) {
-        this.baseApiUrl = baseApiUrl;
-        return this;
-    }
-
-
 }
