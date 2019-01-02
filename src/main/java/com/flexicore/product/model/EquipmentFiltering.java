@@ -72,6 +72,10 @@ public class EquipmentFiltering extends ProductFiltering {
 
     private Set<EquipmentIdFiltering> equipmentIds = new HashSet<>();
 
+    @OneToMany(targetEntity = EquipmentExternalIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ListFieldInfo(displayName = "externalIds",description = "filter by external ids")
+    private Set<EquipmentExternalIdFiltering> externalEquipmentIds = new HashSet<>();
+
     @JsonIgnore
     @Transient
     private List<Gateway> gateways=new ArrayList<>();
@@ -86,6 +90,15 @@ public class EquipmentFiltering extends ProductFiltering {
         return this;
     }
 
+    @OneToMany(targetEntity = EquipmentExternalIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    public Set<EquipmentExternalIdFiltering> getExternalEquipmentIds() {
+        return externalEquipmentIds;
+    }
+
+    public <T extends EquipmentFiltering> T setExternalEquipmentIds(Set<EquipmentExternalIdFiltering> externalEquipmentIds) {
+        this.externalEquipmentIds = externalEquipmentIds;
+        return (T) this;
+    }
 
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     public Set<GroupIdFiltering> getGroupIds() {
