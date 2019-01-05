@@ -73,7 +73,7 @@ public class EquipmentFiltering extends ProductFiltering {
     private Set<EquipmentIdFiltering> equipmentIds = new HashSet<>();
 
     @OneToMany(targetEntity = EquipmentExternalIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @ListFieldInfo(displayName = "externalIds",description = "filter by external ids")
+    @ListFieldInfo(displayName = "externalIds",description = "filter by external ids",listType = EquipmentExternalIdFiltering.class)
     private Set<EquipmentExternalIdFiltering> externalEquipmentIds = new HashSet<>();
 
     @JsonIgnore
