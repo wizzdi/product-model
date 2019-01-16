@@ -6,8 +6,10 @@ import com.flexicore.data.jsoncontainers.Views;
 import com.flexicore.model.Baseclass;
 import com.flexicore.organization.model.SupplierToProduct;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class Product extends Baseclass {
     @JsonView(Views.Unrefined.class)
     @ManyToOne(targetEntity = ProductType.class)
     private ProductType productType;
+
 
 
     @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
@@ -94,4 +97,5 @@ public class Product extends Baseclass {
         this.supplierToProducts = supplierToProducts;
         return this;
     }
+
 }

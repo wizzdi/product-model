@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.iot.ExternalServer;
 import com.flexicore.model.FileResource;
 import com.flexicore.model.territories.Address;
 
@@ -45,6 +46,9 @@ public class Equipment extends Product {
     private String serial;
     private String externalId;
     private String nameHe;
+    @JsonIgnore
+    @ManyToOne(targetEntity = ExternalServer.class)
+    private ExternalServer externalServer;
 
     private String geoHash1;
     @JsonIgnore
@@ -402,5 +406,16 @@ public class Equipment extends Product {
     public Equipment setHumanReadableLocation(String humanReadableLocation) {
         this.humanReadableLocation = humanReadableLocation;
         return this;
+    }
+
+    @JsonIgnore
+    @ManyToOne(targetEntity = ExternalServer.class)
+    public ExternalServer getExternalServer() {
+        return externalServer;
+    }
+
+    public <T extends Equipment> T setExternalServer(ExternalServer externalServer) {
+        this.externalServer = externalServer;
+        return (T) this;
     }
 }

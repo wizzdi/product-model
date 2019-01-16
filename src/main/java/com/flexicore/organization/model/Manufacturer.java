@@ -14,7 +14,6 @@ import java.util.List;
 @Entity
 public class Manufacturer extends Organization {
     static Manufacturer s_Singleton = new Manufacturer();
-
     public static Manufacturer s() {
         return s_Singleton;
     }

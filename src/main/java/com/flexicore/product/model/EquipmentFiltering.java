@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.interfaces.dynamic.ListFieldInfo;
+import com.flexicore.iot.ExternalServer;
 import com.flexicore.model.FilteringInformationHolder;
 import com.flexicore.model.territories.Neighbourhood;
 import com.flexicore.model.territories.Street;
@@ -65,6 +66,12 @@ public class EquipmentFiltering extends ProductFiltering {
     @JsonIgnore
     @Transient
     private List<ProductStatus> productStatusList = new ArrayList<>();
+
+    @OneToMany(targetEntity = ExternalServerIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @IdRefFieldInfo(displayName = "externalServerIds",description = "filter by external server ids",refType = ExternalServer.class)
+    private Set<ExternalServerIdFiltering> externalServerIds = new HashSet<>();
+    @JsonIgnore
+    private List<ExternalServer> externalServers=new ArrayList<>();
 
 
     @OneToMany(targetEntity = EquipmentIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -245,6 +252,28 @@ public class EquipmentFiltering extends ProductFiltering {
         return this;
     }
 
+
+
+    public List<ExternalServer> getExternalServers() {
+        return externalServers;
+    }
+
+    public <T extends EquipmentFiltering> T setExternalServers(List<ExternalServer> externalServers) {
+        this.externalServers = externalServers;
+        return (T) this;
+    }
+
+    @OneToMany(targetEntity = ExternalServerIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @IdRefFieldInfo(displayName = "externalServerIds",description = "filter by external server ids",refType = ExternalServer.class)
+    public Set<ExternalServerIdFiltering> getExternalServerIds() {
+        return externalServerIds;
+    }
+
+    public <T extends EquipmentFiltering> T setExternalServerIds(Set<ExternalServerIdFiltering> externalServerIds) {
+        this.externalServerIds = externalServerIds;
+        return (T) this;
+    }
+
     @Override
     public void prepareForSave() {
         super.prepareForSave();
@@ -265,6 +294,12 @@ public class EquipmentFiltering extends ProductFiltering {
         }
         for (StreetIdFiltering streetId : streetIds) {
             streetId.prepareForSave(this);
+        }
+        for (EquipmentExternalIdFiltering externalEquipmentId : externalEquipmentIds) {
+            externalEquipmentId.prepareForSave(this);
+        }
+        for (ExternalServerIdFiltering externalServerId : externalServerIds) {
+            externalServerId.prepareForSave(this);
         }
         if(locationArea!=null){
             locationArea.prepareForSave(this);
