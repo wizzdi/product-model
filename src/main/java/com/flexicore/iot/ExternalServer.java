@@ -1,9 +1,13 @@
 package com.flexicore.iot;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.product.model.Equipment;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ExternalServer extends Equipment {
@@ -13,6 +17,9 @@ public class ExternalServer extends Equipment {
     }
 
     private String url;
+    @JsonIgnore
+    @OneToMany(targetEntity = ExternalServerUser.class,mappedBy = "externalServer")
+    private List<ExternalServerUser> externalServerUserList=new ArrayList<>();
 
     public String getUrl() {
         return url;
@@ -21,5 +28,16 @@ public class ExternalServer extends Equipment {
     public ExternalServer setUrl(String url) {
         this.url = url;
         return this;
+    }
+
+    @JsonIgnore
+    @OneToMany(targetEntity = ExternalServerUser.class,mappedBy = "externalServer")
+    public List<ExternalServerUser> getExternalServerUserList() {
+        return externalServerUserList;
+    }
+
+    public <T extends ExternalServer> T setExternalServerUserList(List<ExternalServerUser> externalServerUserList) {
+        this.externalServerUserList = externalServerUserList;
+        return (T) this;
     }
 }
