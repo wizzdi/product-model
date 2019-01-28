@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.annotations.sync.SyncOption;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FileResource;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@SyncOption(continueSyncRecursionOnOneToMany = false)
 @Entity
 public class ProductStatus extends Baseclass {
     static ProductStatus s_Singleton = new ProductStatus();

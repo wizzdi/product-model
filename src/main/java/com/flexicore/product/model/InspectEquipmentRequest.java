@@ -23,4 +23,12 @@ public class InspectEquipmentRequest extends ExecutionParametersHolder {
         this.equipmentFiltering = equipmentFiltering;
         return this;
     }
+
+    @Override
+    public void prepareForSave() {
+        super.prepareForSave();
+        if(equipmentFiltering!=null){
+            equipmentFiltering.prepareForSave();
+        }
+    }
 }

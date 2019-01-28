@@ -30,10 +30,6 @@ public class ProductToStatus extends Baselink {
         super.setLeftside(leftside);
     }
 
-    @Override
-    public void setLeftside(Baseclass leftside) {
-        super.setLeftside(leftside);
-    }
 
     @Override
     @ManyToOne(targetEntity =ProductStatus.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})
@@ -45,10 +41,6 @@ public class ProductToStatus extends Baselink {
         super.setRightside(rightside);
     }
 
-    @Override
-    public void setRightside(Baseclass rightside) {
-        super.setRightside(rightside);
-    }
 
     public boolean isEnabled() {
         return enabled;
