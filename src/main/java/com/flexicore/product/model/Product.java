@@ -2,6 +2,7 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.flexicore.annotations.sync.SyncOption;
 import com.flexicore.data.jsoncontainers.Views;
 import com.flexicore.model.Baseclass;
 import com.flexicore.organization.model.SupplierToProduct;
@@ -15,6 +16,7 @@ import java.util.List;
 
 
 @Entity
+@SyncOption(continueSyncRecursionOnOneToMany = true)
 public class Product extends Baseclass {
     static Product s_Singleton = new Product();
 
@@ -34,6 +36,7 @@ public class Product extends Baseclass {
 
 
 
+
     @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
     @JsonIgnore
     private List<ProductToStatus> productToStatusList=new ArrayList<>();
@@ -43,6 +46,7 @@ public class Product extends Baseclass {
     private List<SupplierToProduct> supplierToProducts=new ArrayList<>();
 
 
+    @SyncOption
     @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
     @JsonIgnore
     public List<ProductToStatus> getProductToStatusList() {

@@ -6,7 +6,7 @@
 
     <groupId>com.flexicore</groupId>
     <artifactId>product-model</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -42,17 +42,7 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly</artifactId>
-                <version>14.0.1.Final</version>
-                <type>pom</type>
-            </dependency>
 
-        </dependencies>
-    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -63,7 +53,7 @@
         <dependency>
             <groupId>com.flexicore</groupId>
             <artifactId>FlexiCore</artifactId>
-            <version>2.3.0</version>
+            <version>2.4.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -90,12 +80,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
-            <version>${version.eclipselink}</version>
-            <scope>provided</scope>
-        </dependency>
+
 
         <dependency>
             <groupId>javax.enterprise</groupId>
