@@ -18,6 +18,29 @@ import java.util.Set;
 @Entity
 public class EquipmentFiltering extends ProductFiltering {
 
+    public EquipmentFiltering() {
+    }
+
+    public EquipmentFiltering(EquipmentFiltering other) {
+        super(other);
+        this.groupIds = other.groupIds;
+        this.typesToReturnIds = other.typesToReturnIds;
+        this.typesToReturn = other.typesToReturn;
+        this.equipmentGroups = other.equipmentGroups;
+        this.locationArea = other.locationArea;
+        this.neighbourhoodIds = other.neighbourhoodIds;
+        this.neighbourhoods = other.neighbourhoods;
+        this.streetIds = other.streetIds;
+        this.streets = other.streets;
+        this.productType = other.productType;
+        this.gatewayIds = other.gatewayIds;
+        this.productStatusList = other.productStatusList;
+        this.externalServerIds = other.externalServerIds;
+        this.externalServers = other.externalServers;
+        this.equipmentIds = other.equipmentIds;
+        this.externalEquipmentIds = other.externalEquipmentIds;
+        this.gateways = other.gateways;
+    }
 
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "equipmentFiltering",description = "equipments in equipment groups",refType = EquipmentGroup.class)

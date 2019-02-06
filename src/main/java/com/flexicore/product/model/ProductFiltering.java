@@ -18,6 +18,16 @@ import java.util.Set;
 public class ProductFiltering extends FilteringInformationHolder {
 
 
+    public ProductFiltering() {
+    }
+
+    public ProductFiltering(ProductFiltering other) {
+        super(other);
+        this.productTypeId = other.productTypeId;
+        this.productType = other.productType;
+        this.productStatusIds = other.productStatusIds;
+        this.productStatusList = other.productStatusList;
+    }
 
     @OneToOne(targetEntity = ProductTypeIdFiltering.class)
     @IdRefFieldInfo(displayName = "productTypeId",description = "product type id",refType = ProductType.class,list = false)
