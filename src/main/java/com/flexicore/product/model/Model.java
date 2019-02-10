@@ -1,10 +1,12 @@
 package com.flexicore.product.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.organization.model.Manufacturer;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -21,7 +23,8 @@ public class Model extends Baseclass {
     @ManyToOne(targetEntity = Manufacturer.class)
     private Manufacturer manufacturer;
 
-    @OneToOne(targetEntity = Product.class, mappedBy = "model")
+    @JsonIgnore
+    @OneToMany(targetEntity = Product.class, mappedBy = "model")
     private Product product;
 
     public double getWeight() {
@@ -33,7 +36,8 @@ public class Model extends Baseclass {
         return this;
     }
 
-    @OneToOne(targetEntity = Product.class, mappedBy = "model")
+    @JsonIgnore
+    @OneToMany(targetEntity = Product.class, mappedBy = "model")
     public Product getProduct() {
         return product;
     }
