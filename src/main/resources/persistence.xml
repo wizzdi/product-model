@@ -15,7 +15,6 @@
         <class>com.flexicore.product.model.ProductToStatus</class>
         <class>com.flexicore.product.model.ProductType</class>
         <class>com.flexicore.product.model.ProductTypeToProductStatus</class>
-        <class>com.flexicore.organization.model.Organization</class>
         <class>com.flexicore.organization.model.Manufacturer</class>
         <class>com.flexicore.product.model.ApiProvider</class>
         <class>com.flexicore.product.model.LocationArea</class>
