@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -25,7 +27,7 @@ public class Model extends Baseclass {
 
     @JsonIgnore
     @OneToMany(targetEntity = Product.class, mappedBy = "model")
-    private Product product;
+    private List<Product> products=new ArrayList<>();
 
     public double getWeight() {
         return weight;
@@ -38,12 +40,12 @@ public class Model extends Baseclass {
 
     @JsonIgnore
     @OneToMany(targetEntity = Product.class, mappedBy = "model")
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public Model setProduct(Product product) {
-        this.product = product;
+    public Model setProducts(List<Product> products) {
+        this.products = products;
         return this;
     }
 
