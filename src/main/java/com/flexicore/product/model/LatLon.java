@@ -5,6 +5,7 @@ import com.flexicore.model.Baseclass;
 import com.flexicore.organization.model.Manufacturer;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class LatLon extends Baseclass {
         return s_Singleton;
     }
 
+    @Lob
+    private String contextString;
     private int ordinal;
     private double lat;
     private double lon;
@@ -59,6 +62,16 @@ public class LatLon extends Baseclass {
 
     public <T extends LatLon> T setOrdinal(int ordinal) {
         this.ordinal = ordinal;
+        return (T) this;
+    }
+
+    @Lob
+    public String getContextString() {
+        return contextString;
+    }
+
+    public <T extends LatLon> T setContextString(String contextString) {
+        this.contextString = contextString;
         return (T) this;
     }
 }
