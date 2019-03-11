@@ -19,6 +19,7 @@ public class LatLon extends Baseclass {
         return s_Singleton;
     }
 
+    private int ordinal;
     private double lat;
     private double lon;
     @ManyToOne(targetEntity = MultiLatLonEquipment.class)
@@ -49,6 +50,15 @@ public class LatLon extends Baseclass {
 
     public <T extends LatLon> T setMultiLatLonEquipment(MultiLatLonEquipment multiLatLonEquipment) {
         this.multiLatLonEquipment = multiLatLonEquipment;
+        return (T) this;
+    }
+
+    public int getOrdinal() {
+        return ordinal;
+    }
+
+    public <T extends LatLon> T setOrdinal(int ordinal) {
+        this.ordinal = ordinal;
         return (T) this;
     }
 }

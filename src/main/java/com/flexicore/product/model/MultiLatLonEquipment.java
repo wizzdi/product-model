@@ -16,11 +16,11 @@ public class MultiLatLonEquipment extends Equipment {
 
 
     @JsonIgnore
-    @OneToMany(targetEntity = LatLon.class,mappedBy = "equipment")
+    @OneToMany(targetEntity = LatLon.class,mappedBy = "multiLatLonEquipment")
     private List<LatLon> latLons=new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(targetEntity = LatLon.class,mappedBy = "equipment")
+    @OneToMany(targetEntity = LatLon.class,mappedBy = "multiLatLonEquipment")
     public List<LatLon> getLatLons() {
         return latLons;
     }
