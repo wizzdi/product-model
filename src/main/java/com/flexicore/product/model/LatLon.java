@@ -20,8 +20,7 @@ public class LatLon extends Baseclass {
         return s_Singleton;
     }
 
-    @Lob
-    private String contextString;
+
     private int ordinal;
     private double lat;
     private double lon;
@@ -65,13 +64,5 @@ public class LatLon extends Baseclass {
         return (T) this;
     }
 
-    @Lob
-    public String getContextString() {
-        return contextString;
-    }
 
-    public <T extends LatLon> T setContextString(String contextString) {
-        this.contextString = contextString;
-        return (T) this;
-    }
 }

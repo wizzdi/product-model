@@ -2,11 +2,9 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import com.flexicore.model.PermissionGroup;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +16,9 @@ public class EquipmentGroup extends Baseclass {
     public static EquipmentGroup s() {
         return s_Singleton;
     }
+
+    @OneToOne(targetEntity = PermissionGroup.class)
+    private PermissionGroup relatedPermissionGroup;
 
     @ManyToOne(targetEntity = EquipmentGroup.class)
     private EquipmentGroup parent;
@@ -62,5 +63,15 @@ public class EquipmentGroup extends Baseclass {
     public EquipmentGroup setChildren(List<EquipmentGroup> children) {
         this.children = children;
         return this;
+    }
+
+    @OneToOne(targetEntity = PermissionGroup.class)
+    public PermissionGroup getRelatedPermissionGroup() {
+        return relatedPermissionGroup;
+    }
+
+    public <T extends EquipmentGroup> T setRelatedPermissionGroup(PermissionGroup relatedPermissionGroup) {
+        this.relatedPermissionGroup = relatedPermissionGroup;
+        return (T) this;
     }
 }
