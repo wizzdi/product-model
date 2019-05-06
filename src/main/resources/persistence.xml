@@ -52,6 +52,7 @@
         <class>com.flexicore.product.model.ExternalServerIdFiltering</class>
         <class>com.flexicore.product.model.MultiLatLonEquipment</class>
         <class>com.flexicore.product.model.LatLon</class>
+        <class>com.flexicore.product.model.StatusLinkToImage</class>
 
 
 

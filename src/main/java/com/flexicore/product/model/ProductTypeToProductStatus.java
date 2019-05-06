@@ -8,6 +8,9 @@ import com.flexicore.model.FileResource;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -20,6 +23,12 @@ public class ProductTypeToProductStatus extends Baselink {
     @ManyToOne(targetEntity = FileResource.class)
     @JsonIgnore
     private FileResource image;
+
+    @OneToMany(targetEntity = StatusLinkToImage.class,mappedBy = "statusLink")
+    @JsonIgnore
+    private List<StatusLinkToImage> images=new ArrayList<>();
+
+
 
 
 
@@ -53,5 +62,16 @@ public class ProductTypeToProductStatus extends Baselink {
     public ProductTypeToProductStatus setImage(FileResource image) {
         this.image = image;
         return this;
+    }
+
+    @OneToMany(targetEntity = StatusLinkToImage.class,mappedBy = "statusLink")
+    @JsonIgnore
+    public List<StatusLinkToImage> getImages() {
+        return images;
+    }
+
+    public <T extends ProductTypeToProductStatus> T setImages(List<StatusLinkToImage> images) {
+        this.images = images;
+        return (T) this;
     }
 }
