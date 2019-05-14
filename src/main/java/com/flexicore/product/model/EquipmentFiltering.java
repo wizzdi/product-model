@@ -49,8 +49,12 @@ public class EquipmentFiltering extends ProductFiltering {
 
     @OneToMany(targetEntity = BuildingFloorIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "BuildingFloor",description = "building floors",refType = BuildingFloor.class)
-
     private Set<BuildingFloorIdFiltering> buildingFloorIds = new HashSet<>();
+
+    @JsonIgnore
+    @Transient
+    private List<BuildingFloor> buildingFloors;
+
     @OneToMany(targetEntity = TypeToReturnFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @ListFieldInfo(displayName = "typesToReturnIds",description = "list of canonical class names to return")
 
@@ -312,6 +316,17 @@ public class EquipmentFiltering extends ProductFiltering {
 
     public EquipmentFiltering setBuildingFloorIds(Set<BuildingFloorIdFiltering> buildingFloorIds) {
         this.buildingFloorIds = buildingFloorIds;
+        return this;
+    }
+
+    @Transient
+    @JsonIgnore
+    public List<BuildingFloor> getBuildingFloors() {
+        return buildingFloors;
+    }
+
+    public EquipmentFiltering setBuildingFloors(List<BuildingFloor> buildingFloors) {
+        this.buildingFloors = buildingFloors;
         return this;
     }
 
