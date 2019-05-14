@@ -5,7 +5,6 @@ import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.interfaces.dynamic.ListFieldInfo;
 import com.flexicore.iot.ExternalServer;
-import com.flexicore.model.FilteringInformationHolder;
 import com.flexicore.model.territories.Neighbourhood;
 import com.flexicore.model.territories.Street;
 
@@ -40,12 +39,18 @@ public class EquipmentFiltering extends ProductFiltering {
         this.equipmentIds = other.equipmentIds;
         this.externalEquipmentIds = other.externalEquipmentIds;
         this.gateways = other.gateways;
+        this.buildingFloorIds =other.buildingFloorIds;
     }
 
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    @IdRefFieldInfo(displayName = "equipmentFiltering",description = "equipments in equipment groups",refType = EquipmentGroup.class)
+    @IdRefFieldInfo(displayName = "equipmentGroupFiltering",description = "equipments in equipment groups",refType = EquipmentGroup.class)
 
     private Set<GroupIdFiltering> groupIds = new HashSet<>();
+
+    @OneToMany(targetEntity = BuildingFloorIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "BuildingFloor",description = "building floors",refType = BuildingFloor.class)
+
+    private Set<BuildingFloorIdFiltering> buildingFloorIds = new HashSet<>();
     @OneToMany(targetEntity = TypeToReturnFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @ListFieldInfo(displayName = "typesToReturnIds",description = "list of canonical class names to return")
 
@@ -297,6 +302,19 @@ public class EquipmentFiltering extends ProductFiltering {
         return (T) this;
     }
 
+
+    @OneToMany(targetEntity = BuildingFloorIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "equipmentFiltering",description = "equipments in equipment groups",refType = Building.class)
+
+    public Set<BuildingFloorIdFiltering> getBuildingFloorIds() {
+        return buildingFloorIds;
+    }
+
+    public EquipmentFiltering setBuildingFloorIds(Set<BuildingFloorIdFiltering> buildingFloorIds) {
+        this.buildingFloorIds = buildingFloorIds;
+        return this;
+    }
+
     @Override
     public void prepareForSave() {
         super.prepareForSave();
@@ -323,6 +341,10 @@ public class EquipmentFiltering extends ProductFiltering {
         }
         for (ExternalServerIdFiltering externalServerId : externalServerIds) {
             externalServerId.prepareForSave(this);
+        }
+
+        for (BuildingFloorIdFiltering buildingIdFiltering : buildingFloorIds) {
+            buildingIdFiltering.prepareForSave(this);
         }
         if(locationArea!=null){
             locationArea.prepareForSave(this);

@@ -50,6 +50,9 @@ public class Equipment extends Product {
     @ManyToOne(targetEntity = ExternalServer.class)
     private ExternalServer externalServer;
 
+    @ManyToOne(targetEntity = BuildingFloor.class)
+    private BuildingFloor buildingFloor;
+
     private String geoHash1;
     @JsonIgnore
     private String geoHash2;
@@ -417,5 +420,15 @@ public class Equipment extends Product {
     public <T extends Equipment> T setExternalServer(ExternalServer externalServer) {
         this.externalServer = externalServer;
         return (T) this;
+    }
+
+    @ManyToOne(targetEntity = BuildingFloor.class)
+    public BuildingFloor getBuildingFloor() {
+        return buildingFloor;
+    }
+
+    public Equipment setBuildingFloor(BuildingFloor buildingFloor) {
+        this.buildingFloor = buildingFloor;
+        return this;
     }
 }
