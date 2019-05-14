@@ -16,6 +16,8 @@ public class BuildingFloor extends Baseclass {
 
 
    private int floorNumber;
+    @ManyToOne(targetEntity = Building.class)
+    private Building building;
 
     @ManyToOne(targetEntity = FileResource.class)
     private FileResource diagram;
@@ -36,6 +38,16 @@ public class BuildingFloor extends Baseclass {
 
     public BuildingFloor setDiagram(FileResource diagram) {
         this.diagram = diagram;
+        return this;
+    }
+
+    @ManyToOne(targetEntity = Building.class)
+    public Building getBuilding() {
+        return building;
+    }
+
+    public BuildingFloor setBuilding(Building building) {
+        this.building = building;
         return this;
     }
 }
