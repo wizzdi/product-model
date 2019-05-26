@@ -16,15 +16,12 @@ public class StatusLinkToImage extends Baseclass {
     }
 
     @ManyToOne(targetEntity = FileResource.class)
-    @JsonIgnore
     private FileResource image;
     @ManyToOne(targetEntity = ProductTypeToProductStatus.class)
     private ProductTypeToProductStatus statusLink;
 
 
     @ManyToOne(targetEntity = FileResource.class)
-    @JsonIgnore
-
     public FileResource getImage() {
         return image;
     }

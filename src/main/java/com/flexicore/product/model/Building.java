@@ -17,25 +17,13 @@ public class Building extends Equipment {
     }
 
 
-    @OneToMany(targetEntity = Equipment.class,mappedBy = "building")
-    @JsonIgnore
-    private List<Equipment> equipmentsInBuilding=new ArrayList<>();
+
 
     @OneToMany(targetEntity = BuildingFloor.class,mappedBy = "building")
     @JsonIgnore
     private List<BuildingFloor> floors=new ArrayList<>();
 
 
-    @OneToMany(targetEntity = Equipment.class,mappedBy = "building")
-    @JsonIgnore
-    public List<Equipment> getEquipmentsInBuilding() {
-        return equipmentsInBuilding;
-    }
-
-    public Building setEquipmentsInBuilding(List<Equipment> equipmentsInBuilding) {
-        this.equipmentsInBuilding = equipmentsInBuilding;
-        return this;
-    }
 
     @OneToMany(targetEntity = BuildingFloor.class,mappedBy = "building")
     @JsonIgnore
