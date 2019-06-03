@@ -40,6 +40,7 @@ public class BuildingFloor extends Baseclass {
         return this;
     }
 
+    @ManyToOne(targetEntity = FileResource.class)
     public FileResource getDiagram() {
         return diagram;
     }
