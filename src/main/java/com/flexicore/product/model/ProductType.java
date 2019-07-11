@@ -22,6 +22,9 @@ public class ProductType extends Baseclass {
     @ManyToOne(targetEntity = FileResource.class)
     private FileResource image;
 
+    @ManyToOne(targetEntity = FileResource.class)
+    private FileResource diagram3D;
+
 
 
     @OneToMany(targetEntity = ProductTypeToProductStatus.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
@@ -48,5 +51,15 @@ public class ProductType extends Baseclass {
     public ProductType setImage(FileResource image) {
         this.image = image;
         return this;
+    }
+
+    @ManyToOne(targetEntity = FileResource.class)
+    public FileResource getDiagram3D() {
+        return diagram3D;
+    }
+
+    public <T extends ProductType> T setDiagram3D(FileResource diagram3D) {
+        this.diagram3D = diagram3D;
+        return (T) this;
     }
 }

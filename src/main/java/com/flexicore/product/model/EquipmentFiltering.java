@@ -42,6 +42,8 @@ public class EquipmentFiltering extends ProductFiltering {
         this.buildingFloorIds =other.buildingFloorIds;
     }
 
+    private boolean excludeZeroLocation;
+
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "equipmentGroupFiltering",description = "equipments in equipment groups",refType = EquipmentGroup.class)
 
@@ -328,6 +330,16 @@ public class EquipmentFiltering extends ProductFiltering {
     public EquipmentFiltering setBuildingFloors(List<BuildingFloor> buildingFloors) {
         this.buildingFloors = buildingFloors;
         return this;
+    }
+
+    @FieldInfo(displayName = "Exclude Zero Location")
+    public boolean getExcludeZeroLocation() {
+        return excludeZeroLocation;
+    }
+
+    public <T extends EquipmentFiltering> T setExcludeZeroLocation(boolean excludeZeroLocation) {
+        this.excludeZeroLocation = excludeZeroLocation;
+        return (T) this;
     }
 
     @Override

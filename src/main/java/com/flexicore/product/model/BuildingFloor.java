@@ -30,6 +30,9 @@ public class BuildingFloor extends Baseclass {
     @ManyToOne(targetEntity = FileResource.class)
     private FileResource diagram;
 
+    @ManyToOne(targetEntity = FileResource.class)
+    private FileResource diagram3D;
+
     public int getFloorNumber() {
         return floorNumber;
     }
@@ -69,5 +72,15 @@ public class BuildingFloor extends Baseclass {
     public BuildingFloor setEquipmentsInBuilding(List<Equipment> equipmentsInBuilding) {
         this.equipmentsInBuilding = equipmentsInBuilding;
         return this;
+    }
+
+    @ManyToOne(targetEntity = FileResource.class)
+    public FileResource getDiagram3D() {
+        return diagram3D;
+    }
+
+    public <T extends BuildingFloor> T setDiagram3D(FileResource diagram3D) {
+        this.diagram3D = diagram3D;
+        return (T) this;
     }
 }

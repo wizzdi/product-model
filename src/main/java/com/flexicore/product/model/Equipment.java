@@ -98,6 +98,9 @@ public class Equipment extends Product {
     private FileResource icon;
 
 
+    @Lob
+    private String descriptor3D;
+
 
 
 
@@ -430,5 +433,15 @@ public class Equipment extends Product {
     public Equipment setBuildingFloor(BuildingFloor buildingFloor) {
         this.buildingFloor = buildingFloor;
         return this;
+    }
+
+    @Lob
+    public String getDescriptor3D() {
+        return descriptor3D;
+    }
+
+    public <T extends Equipment> T setDescriptor3D(String descriptor3D) {
+        this.descriptor3D = descriptor3D;
+        return (T) this;
     }
 }

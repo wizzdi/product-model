@@ -97,6 +97,9 @@ public class ProductFiltering extends FilteringInformationHolder {
         for (ProductStatusIdFiltering productStatusId : productStatusIds) {
             productStatusId.prepareForSave(this);
         }
+        if(productTypeId!=null){
+            productTypeId.prepareForSave(this);
+        }
 
 
     }
