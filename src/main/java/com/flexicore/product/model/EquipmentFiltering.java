@@ -62,6 +62,11 @@ public class EquipmentFiltering extends ProductFiltering {
 
     private Set<TypeToReturnFiltering> typesToReturnIds = new HashSet<>();
 
+
+    @OneToMany(targetEntity = EquipmentByStatusEntryIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "equipmentByStatusEntryIds",description = "Equipment By Status Entry ids",refType = EquipmentByStatusEntry.class)
+    private Set<EquipmentByStatusEntryIdFiltering> equipmentByStatusEntryIds = new HashSet<>();
+
     @Transient
     @JsonIgnore
     private List<Class<?>> typesToReturn=new ArrayList<>();
@@ -342,6 +347,19 @@ public class EquipmentFiltering extends ProductFiltering {
         return (T) this;
     }
 
+
+
+    @OneToMany(targetEntity = EquipmentByStatusEntryIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @IdRefFieldInfo(displayName = "equipmentByStatusEntryIds",description = "Equipment By Status Entry ids",refType = EquipmentByStatusEntry.class)
+    public Set<EquipmentByStatusEntryIdFiltering> getEquipmentByStatusEntryIds() {
+        return equipmentByStatusEntryIds;
+    }
+
+    public <T extends EquipmentFiltering> T setEquipmentByStatusEntryIds(Set<EquipmentByStatusEntryIdFiltering> equipmentByStatusEntryIds) {
+        this.equipmentByStatusEntryIds = equipmentByStatusEntryIds;
+        return (T) this;
+    }
+
     @Override
     public void prepareForSave() {
         super.prepareForSave();
@@ -372,6 +390,9 @@ public class EquipmentFiltering extends ProductFiltering {
 
         for (BuildingFloorIdFiltering buildingIdFiltering : buildingFloorIds) {
             buildingIdFiltering.prepareForSave(this);
+        }
+        for (EquipmentByStatusEntryIdFiltering equipmentByStatusEntryId : equipmentByStatusEntryIds) {
+            equipmentByStatusEntryId.prepareForSave(this);
         }
         if(locationArea!=null){
             locationArea.prepareForSave(this);

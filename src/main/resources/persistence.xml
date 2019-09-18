@@ -59,6 +59,10 @@
         <class>com.flexicore.product.model.BuildingFiltering</class>
         <class>com.flexicore.product.model.BuildingFloorFiltering</class>
         <class>com.flexicore.product.model.BuildingIdFiltering</class>
+        <class>com.flexicore.product.model.EquipmentStatusRequest</class>
+        <class>com.flexicore.product.model.EquipmentByStatusEntryIdFiltering</class>
+        <class>com.flexicore.product.model.EquipmentByStatusEntryFiltering</class>
+        <class>com.flexicore.product.model.EquipmentByStatusEventIdFiltering</class>
 
 
 
