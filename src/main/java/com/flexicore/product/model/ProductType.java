@@ -3,6 +3,7 @@ package com.flexicore.product.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FileResource;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,12 +20,18 @@ public class ProductType extends Baseclass {
         return s_Singleton;
     }
 
+    public ProductType() {
+    }
+
+    public ProductType(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
+
     @ManyToOne(targetEntity = FileResource.class)
     private FileResource image;
 
     @ManyToOne(targetEntity = FileResource.class)
     private FileResource diagram3D;
-
 
 
     @OneToMany(targetEntity = ProductTypeToProductStatus.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})

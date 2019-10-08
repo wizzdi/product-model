@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.iot.ExternalServer;
 import com.flexicore.model.FileResource;
 import com.flexicore.model.territories.Address;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -40,6 +41,12 @@ public class Equipment extends Product {
         registerSingletone(s_Singleton);
     }
 
+    public Equipment() {
+    }
+
+    public Equipment(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     private double lat;
     private double lon;

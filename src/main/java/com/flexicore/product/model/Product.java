@@ -6,6 +6,7 @@ import com.flexicore.annotations.sync.SyncOption;
 import com.flexicore.data.jsoncontainers.Views;
 import com.flexicore.model.Baseclass;
 import com.flexicore.organization.model.SupplierToProduct;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -35,7 +36,13 @@ public class Product extends Baseclass {
     private ProductType productType;
 
 
+    public Product() {
+    }
 
+
+    public Product(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @OneToMany(targetEntity = ProductToStatus.class,mappedBy = "leftside")
     @JsonIgnore
