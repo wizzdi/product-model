@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
@@ -12,6 +13,14 @@ public class Gateway extends Equipment {
 
     public static Gateway s() {
         return s_Singleton;
+    }
+
+
+    public Gateway() {
+    }
+
+    public Gateway(String name, SecurityContext securityContext) {
+        super(name, securityContext);
     }
 
     private LocalDateTime lastSucessfulConnction;
