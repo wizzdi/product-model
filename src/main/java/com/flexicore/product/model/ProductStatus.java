@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.annotations.sync.SyncOption;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FileResource;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.*;
 import java.io.File;
@@ -20,6 +21,12 @@ public class ProductStatus extends Baseclass {
     }
 
 
+    public ProductStatus() {
+    }
+
+    public ProductStatus(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     private int priority;
 

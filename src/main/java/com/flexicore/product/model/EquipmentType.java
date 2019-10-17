@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
@@ -13,6 +14,10 @@ public class EquipmentType extends ProductType {
         return s_Singleton;
     }
 
+    public EquipmentType() {
+    }
 
-
+    public EquipmentType(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 }

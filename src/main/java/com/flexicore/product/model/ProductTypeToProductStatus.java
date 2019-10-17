@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.Baselink;
 import com.flexicore.model.FileResource;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -28,9 +29,12 @@ public class ProductTypeToProductStatus extends Baselink {
     @JsonIgnore
     private List<StatusLinkToImage> images=new ArrayList<>();
 
+    public ProductTypeToProductStatus() {
+    }
 
-
-
+    public ProductTypeToProductStatus(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @Override
     @ManyToOne(targetEntity =ProductType.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})

@@ -3,6 +3,7 @@ package com.flexicore.product.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.PermissionGroup;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +16,13 @@ public class EquipmentGroup extends Baseclass {
     static EquipmentGroup s_Singleton = new EquipmentGroup();
     public static EquipmentGroup s() {
         return s_Singleton;
+    }
+
+    public EquipmentGroup() {
+    }
+
+    public EquipmentGroup(String name, SecurityContext securityContext) {
+        super(name, securityContext);
     }
 
     @OneToOne(targetEntity = PermissionGroup.class)

@@ -3,6 +3,7 @@ package com.flexicore.product.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.organization.model.Manufacturer;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -28,6 +29,13 @@ public class Model extends Baseclass {
     @JsonIgnore
     @OneToMany(targetEntity = Product.class, mappedBy = "model")
     private List<Product> products=new ArrayList<>();
+
+    public Model() {
+    }
+
+    public Model(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     public double getWeight() {
         return weight;

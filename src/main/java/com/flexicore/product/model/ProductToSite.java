@@ -6,6 +6,7 @@ import com.flexicore.organization.model.Consumer;
 import com.flexicore.organization.model.ConsumerToOrganization;
 import com.flexicore.organization.model.Organization;
 import com.flexicore.organization.model.Site;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,8 +21,12 @@ public class ProductToSite extends Baselink {
     }
 
 
+    public ProductToSite() {
+    }
 
-
+    public ProductToSite(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @Override
     @ManyToOne(targetEntity = Product.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})

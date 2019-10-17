@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -17,7 +18,12 @@ public class Building extends Equipment {
     }
 
 
+    public Building() {
+    }
 
+    public Building(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @OneToMany(targetEntity = BuildingFloor.class,mappedBy = "building")
     @JsonIgnore

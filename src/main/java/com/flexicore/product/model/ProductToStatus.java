@@ -2,6 +2,7 @@ package com.flexicore.product.model;
 
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.Baselink;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,7 +19,12 @@ public class ProductToStatus extends Baselink {
     private boolean enabled;
 
 
+    public ProductToStatus() {
+    }
 
+    public ProductToStatus(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @Override
     @ManyToOne(targetEntity =Product.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})

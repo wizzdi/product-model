@@ -3,6 +3,7 @@ package com.flexicore.product.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.organization.model.Manufacturer;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -27,6 +28,13 @@ public class LatLon extends Baseclass {
     @ManyToOne(targetEntity = MultiLatLonEquipment.class)
     private MultiLatLonEquipment multiLatLonEquipment;
 
+
+    public LatLon() {
+    }
+
+    public LatLon(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
     public double getLat() {
         return lat;
     }

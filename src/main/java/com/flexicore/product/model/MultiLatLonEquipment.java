@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -14,6 +15,13 @@ public class MultiLatLonEquipment extends Equipment {
 
     public static MultiLatLonEquipment s() {
         return s_Singleton;
+    }
+
+    public MultiLatLonEquipment() {
+    }
+
+    public MultiLatLonEquipment(String name, SecurityContext securityContext) {
+        super(name, securityContext);
     }
 
     private boolean closedArea;

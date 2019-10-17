@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.flexicore.model.FlexiCoreServer;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -10,6 +11,12 @@ public class FlexiCoreGateway extends Gateway {
     private static FlexiCoreGateway s_Singleton=new FlexiCoreGateway();
     public  static FlexiCoreGateway s() {return s_Singleton;}
 
+    public FlexiCoreGateway() {
+    }
+
+    public FlexiCoreGateway(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @OneToOne(targetEntity = FlexiCoreServer.class)
     private FlexiCoreServer flexiCoreServer;

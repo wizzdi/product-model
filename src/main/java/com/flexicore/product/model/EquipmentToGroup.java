@@ -2,6 +2,7 @@ package com.flexicore.product.model;
 
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.Baselink;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,7 +17,12 @@ public class EquipmentToGroup extends Baselink {
     }
 
 
+    public EquipmentToGroup() {
+    }
 
+    public EquipmentToGroup(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @Override
     @ManyToOne(targetEntity =Equipment.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})
