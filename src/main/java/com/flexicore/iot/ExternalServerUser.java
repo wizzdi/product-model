@@ -1,6 +1,7 @@
 package com.flexicore.iot;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -11,6 +12,13 @@ public class ExternalServerUser extends Baseclass {
 
     public static ExternalServerUser s() {
         return s_Singleton;
+    }
+
+    public ExternalServerUser() {
+    }
+
+    public ExternalServerUser(String name, SecurityContext securityContext) {
+        super(name, securityContext);
     }
 
     private String username;

@@ -3,6 +3,7 @@ package com.flexicore.iot;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.product.model.Equipment;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -14,6 +15,13 @@ public class ExternalServer extends Equipment {
     static ExternalServer s_Singleton = new ExternalServer();
     public static ExternalServer s() {
         return s_Singleton;
+    }
+
+    public ExternalServer() {
+    }
+
+    public ExternalServer(String name, SecurityContext securityContext) {
+        super(name, securityContext);
     }
 
     private String url;
