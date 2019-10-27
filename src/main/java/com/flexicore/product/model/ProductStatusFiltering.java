@@ -1,13 +1,11 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.model.FilteringInformationHolder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class ProductStatusFiltering extends FilteringInformationHolder {
@@ -18,6 +16,10 @@ public class ProductStatusFiltering extends FilteringInformationHolder {
     @JsonIgnore
     @Transient
     private ProductType productType;
+
+    @FieldInfo(description = "will only return product statuses that are used by the product that match this filter")
+    @ManyToOne(targetEntity = EquipmentFiltering.class)
+    private EquipmentFiltering equipmentFiltering;
 
     @OneToOne(targetEntity = ProductTypeIdFiltering.class,mappedBy = "filteringInformationHolder",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     public ProductTypeIdFiltering getProductTypeId() {
@@ -39,12 +41,22 @@ public class ProductStatusFiltering extends FilteringInformationHolder {
         return this;
     }
 
+    @ManyToOne(targetEntity = EquipmentFiltering.class)
+    public EquipmentFiltering getEquipmentFiltering() {
+        return equipmentFiltering;
+    }
+
+    public <T extends ProductStatusFiltering> T setEquipmentFiltering(EquipmentFiltering equipmentFiltering) {
+        this.equipmentFiltering = equipmentFiltering;
+        return (T) this;
+    }
+
     @Override
     public void prepareForSave() {
         super.prepareForSave();
         if(productTypeId!=null){
             productTypeId.prepareForSave(this);
-
         }
+
     }
 }

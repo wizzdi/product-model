@@ -27,6 +27,10 @@ public class ProductType extends Baseclass {
         super(name, securityContext);
     }
 
+    @JsonIgnore
+    @OneToMany(targetEntity = Product.class,mappedBy = "productType")
+    private List<Product> products=new ArrayList<>();
+
     @ManyToOne(targetEntity = FileResource.class)
     private FileResource image;
 
@@ -67,6 +71,17 @@ public class ProductType extends Baseclass {
 
     public <T extends ProductType> T setDiagram3D(FileResource diagram3D) {
         this.diagram3D = diagram3D;
+        return (T) this;
+    }
+
+    @JsonIgnore
+    @OneToMany(targetEntity = Product.class,mappedBy = "productType")
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public <T extends ProductType> T setProducts(List<Product> products) {
+        this.products = products;
         return (T) this;
     }
 }
