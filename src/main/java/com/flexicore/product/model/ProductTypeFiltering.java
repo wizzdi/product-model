@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 public class ProductTypeFiltering extends FilteringInformationHolder {
 
 
-    @FieldInfo(description = "will only return product statuses that are used by the product that match this filter")
+    @FieldInfo(description = "will only return product types that are used by the product that match this filter")
     @ManyToOne(targetEntity = EquipmentFiltering.class)
     private EquipmentFiltering equipmentFiltering;
 
