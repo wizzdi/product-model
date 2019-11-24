@@ -39,7 +39,6 @@ public class EquipmentFiltering extends ProductFiltering {
         this.equipmentIds = other.equipmentIds;
         this.externalEquipmentIds = other.externalEquipmentIds;
         this.gateways = other.gateways;
-        this.buildingFloorIds =other.buildingFloorIds;
     }
 
     private boolean excludeZeroLocation;
@@ -49,13 +48,7 @@ public class EquipmentFiltering extends ProductFiltering {
 
     private Set<GroupIdFiltering> groupIds = new HashSet<>();
 
-    @OneToMany(targetEntity = BuildingFloorIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    @IdRefFieldInfo(displayName = "BuildingFloor",description = "building floors",refType = BuildingFloor.class)
-    private Set<BuildingFloorIdFiltering> buildingFloorIds = new HashSet<>();
 
-    @JsonIgnore
-    @Transient
-    private List<BuildingFloor> buildingFloors;
 
     @OneToMany(targetEntity = TypeToReturnFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @ListFieldInfo(displayName = "typesToReturnIds",description = "list of canonical class names to return")
@@ -314,28 +307,6 @@ public class EquipmentFiltering extends ProductFiltering {
     }
 
 
-    @OneToMany(targetEntity = BuildingFloorIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    @IdRefFieldInfo(displayName = "equipmentFiltering",description = "equipments in equipment groups",refType = Building.class)
-
-    public Set<BuildingFloorIdFiltering> getBuildingFloorIds() {
-        return buildingFloorIds;
-    }
-
-    public EquipmentFiltering setBuildingFloorIds(Set<BuildingFloorIdFiltering> buildingFloorIds) {
-        this.buildingFloorIds = buildingFloorIds;
-        return this;
-    }
-
-    @Transient
-    @JsonIgnore
-    public List<BuildingFloor> getBuildingFloors() {
-        return buildingFloors;
-    }
-
-    public EquipmentFiltering setBuildingFloors(List<BuildingFloor> buildingFloors) {
-        this.buildingFloors = buildingFloors;
-        return this;
-    }
 
     @FieldInfo(displayName = "Exclude Zero Location")
     public boolean getExcludeZeroLocation() {
@@ -388,9 +359,6 @@ public class EquipmentFiltering extends ProductFiltering {
             externalServerId.prepareForSave(this);
         }
 
-        for (BuildingFloorIdFiltering buildingIdFiltering : buildingFloorIds) {
-            buildingIdFiltering.prepareForSave(this);
-        }
         for (EquipmentByStatusEntryIdFiltering equipmentByStatusEntryId : equipmentByStatusEntryIds) {
             equipmentByStatusEntryId.prepareForSave(this);
         }

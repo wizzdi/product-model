@@ -53,12 +53,6 @@
         <class>com.flexicore.product.model.MultiLatLonEquipment</class>
         <class>com.flexicore.product.model.LatLon</class>
         <class>com.flexicore.product.model.StatusLinkToImage</class>
-        <class>com.flexicore.product.model.Building</class>
-        <class>com.flexicore.product.model.BuildingFloorIdFiltering</class>
-        <class>com.flexicore.product.model.BuildingFloor</class>
-        <class>com.flexicore.product.model.BuildingFiltering</class>
-        <class>com.flexicore.product.model.BuildingFloorFiltering</class>
-        <class>com.flexicore.product.model.BuildingIdFiltering</class>
         <class>com.flexicore.product.model.EquipmentStatusRequest</class>
         <class>com.flexicore.product.model.EquipmentByStatusEntryIdFiltering</class>
         <class>com.flexicore.product.model.EquipmentByStatusEntryFiltering</class>
