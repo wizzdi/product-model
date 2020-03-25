@@ -58,6 +58,7 @@
         <class>com.flexicore.product.model.EquipmentByStatusEntryFiltering</class>
         <class>com.flexicore.product.model.EquipmentByStatusEventIdFiltering</class>
         <class>com.flexicore.product.containers.request.UpdateProductStatus</class>
+        <class>com.flexicore.product.containers.request.ExternalServerFiltering</class>
 
 
 
