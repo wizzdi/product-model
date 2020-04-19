@@ -6,6 +6,7 @@ import com.flexicore.model.Baseclass;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class LocationArea {
@@ -17,7 +18,7 @@ public class LocationArea {
         this.id= Baseclass.getBase64ID();
     }
 
-    @ManyToOne(targetEntity = EquipmentFiltering.class)
+    @OneToOne(targetEntity = EquipmentFiltering.class)
     private EquipmentFiltering equipmentFiltering;
 
     @FieldInfo(displayName = "lonStart",description = "longitude starts")
@@ -79,7 +80,7 @@ public class LocationArea {
         return this;
     }
 
-    @ManyToOne(targetEntity = EquipmentFiltering.class)
+    @OneToOne(targetEntity = EquipmentFiltering.class)
     public EquipmentFiltering getEquipmentFiltering() {
         return equipmentFiltering;
     }

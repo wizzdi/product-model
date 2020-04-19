@@ -113,11 +113,6 @@ public class Equipment extends Product {
     @JsonIgnore
     private List<EquipmentToGroup> equipmentToGroupList=new ArrayList<>();
 
-    private LocalDateTime lastSuccessfulSync;
-    private LocalDateTime nextSyncTime;
-    private long syncInterval;
-    private long syncConsecutiveFailedAttempts;
-
 
     @OneToMany(targetEntity = EquipmentToGroup.class,mappedBy = "leftside",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
@@ -314,43 +309,6 @@ public class Equipment extends Product {
 
     public Equipment setApiProvider(ApiProvider apiProvider) {
         this.apiProvider = apiProvider;
-        return this;
-    }
-
-
-    public LocalDateTime getLastSuccessfulSync() {
-        return lastSuccessfulSync;
-    }
-
-    public Equipment setLastSuccessfulSync(LocalDateTime lastSuccessfulSync) {
-        this.lastSuccessfulSync = lastSuccessfulSync;
-        return this;
-    }
-
-    public LocalDateTime getNextSyncTime() {
-        return nextSyncTime;
-    }
-
-    public Equipment setNextSyncTime(LocalDateTime nextSyncTime) {
-        this.nextSyncTime = nextSyncTime;
-        return this;
-    }
-
-    public long getSyncInterval() {
-        return syncInterval;
-    }
-
-    public Equipment setSyncInterval(long syncInterval) {
-        this.syncInterval = syncInterval;
-        return this;
-    }
-
-    public long getSyncConsecutiveFailedAttempts() {
-        return syncConsecutiveFailedAttempts;
-    }
-
-    public Equipment setSyncConsecutiveFailedAttempts(long syncConsecutiveFailedAttempts) {
-        this.syncConsecutiveFailedAttempts = syncConsecutiveFailedAttempts;
         return this;
     }
 

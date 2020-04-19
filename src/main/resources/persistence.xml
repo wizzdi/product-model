@@ -59,6 +59,11 @@
         <class>com.flexicore.product.model.EquipmentByStatusEventIdFiltering</class>
         <class>com.flexicore.product.containers.request.UpdateProductStatus</class>
         <class>com.flexicore.product.containers.request.ExternalServerFiltering</class>
+        <class>com.flexicore.product.containers.request.EventFiltering</class>
+        <class>com.flexicore.product.containers.request.AckedUserIdRef</class>
+        <class>com.flexicore.product.containers.request.BaseclassIdRef</class>
+        <class>com.flexicore.product.containers.request.TargetBaseclassIdRef</class>
+        <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
 
 
 
