@@ -64,6 +64,7 @@
         <class>com.flexicore.product.containers.request.BaseclassIdRef</class>
         <class>com.flexicore.product.containers.request.TargetBaseclassIdRef</class>
         <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
+        <class>com.flexicore.product.model.ProductStatusChangedTrigger</class>
 
 
 
