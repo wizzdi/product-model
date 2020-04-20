@@ -20,7 +20,7 @@
         <repository>
             <id>flexicore-local</id>
             <name>flexicore-local</name>
-            <url>http://138.201.191.203:8083/artifactory/flexicore-local</url>
+            <url>https://artifactory.wizzdi.com/artifactory/flexicore-local</url>
 
         </repository>
     </distributionManagement>
@@ -30,7 +30,7 @@
         <repository>
             <id>flexicore-local</id>
             <name>flexicore-local</name>
-            <url>http://138.201.191.203:8083/artifactory/flexicore-local</url>
+            <url>https://artifactory.wizzdi.com/artifactory/flexicore-local</url>
         </repository>
     </repositories>
 
@@ -38,7 +38,7 @@
         <pluginRepository>
             <id>flexicore-local</id>
             <name>flexicore-local</name>
-            <url>http://138.201.191.203:8083/artifactory/flexicore-local</url>
+            <url>https://artifactory.wizzdi.com/artifactory/flexicore-local</url>
         </pluginRepository>
     </pluginRepositories>
 
