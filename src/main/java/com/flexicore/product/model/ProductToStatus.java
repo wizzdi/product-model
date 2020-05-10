@@ -57,12 +57,4 @@ public class ProductToStatus extends Baselink {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "ProductToStatus{" +
-                "enabled=" + enabled +
-                ", rightside=" + (rightside!=null?rightside.getName()+"("+rightside.getId()+")":null) +
-                ", leftside=" + (leftside!=null?leftside.getName()+"("+leftside.getId()+")":null) +
-                "} " + super.toString();
-    }
 }

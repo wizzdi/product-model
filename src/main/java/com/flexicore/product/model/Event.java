@@ -33,6 +33,7 @@ public class Event {
     private String userAckedName;
     private String ackNotes;
     private String targetBaseclassId;
+    private String externalServerId;
     private boolean falseAlarm;
 
 
@@ -52,6 +53,7 @@ public class Event {
                 .setCommunicationGatewayId(equipment.getCommunicationGateway() != null ? equipment.getCommunicationGateway().getId() : null)
                 .setBaseclassLat(equipment.getLat())
                 .setBaseclassLon(equipment.getLon())
+                .setExternalServerId(equipment.getExternalServer()!=null?equipment.getExternalServer().getId():null)
                 .setProductTypeId(equipment.getProductType()!=null?equipment.getProductType().getId():null);
 
 
@@ -234,6 +236,15 @@ public class Event {
 
     public <T extends Event> T setUserAckedName(String userAckedName) {
         this.userAckedName = userAckedName;
+        return (T) this;
+    }
+
+    public String getExternalServerId() {
+        return externalServerId;
+    }
+
+    public <T extends Event> T setExternalServerId(String externalServerId) {
+        this.externalServerId = externalServerId;
         return (T) this;
     }
 }
