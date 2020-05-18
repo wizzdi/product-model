@@ -20,6 +20,8 @@ public class ExternalServer extends Equipment {
 
     private String url;
     private long inspectIntervalMs;
+    private long inspectAfterActivateIntervalMs;
+
     private LocalDateTime lastInspectAttempt;
     private LocalDateTime lastSuccessfulInspect;
 
@@ -81,6 +83,15 @@ public class ExternalServer extends Equipment {
 
     public <T extends ExternalServer> T setLastSuccessfulInspect(LocalDateTime lastSuccessfulInspect) {
         this.lastSuccessfulInspect = lastSuccessfulInspect;
+        return (T) this;
+    }
+
+    public long getInspectAfterActivateIntervalMs() {
+        return inspectAfterActivateIntervalMs;
+    }
+
+    public <T extends ExternalServer> T setInspectAfterActivateIntervalMs(long inspectAfterActivateIntervalMs) {
+        this.inspectAfterActivateIntervalMs = inspectAfterActivateIntervalMs;
         return (T) this;
     }
 }
