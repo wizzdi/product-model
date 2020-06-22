@@ -41,6 +41,7 @@
         <class>com.flexicore.product.model.GatewayConsoleIdFiltering</class>
         <class>com.flexicore.product.model.EquipmentIdFiltering</class>
         <class>com.flexicore.product.model.GatewayFiltering</class>
+        <class>com.flexicore.iot.model.FlexiCoreServer</class>
         <class>com.flexicore.product.model.FlexiCoreGateway</class>
         <class>com.flexicore.product.model.FlexiCoreGatewayFiltering</class>
         <class>com.flexicore.product.model.ProductToSite</class>

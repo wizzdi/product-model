@@ -1,6 +1,6 @@
 package com.flexicore.product.model;
 
-import com.flexicore.model.FlexiCoreServer;
+import com.flexicore.iot.model.FlexiCoreServer;
 import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;

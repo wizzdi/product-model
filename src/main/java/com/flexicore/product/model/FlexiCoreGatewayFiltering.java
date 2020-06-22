@@ -3,9 +3,10 @@ package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
-import com.flexicore.model.FlexiCoreServer;
-import com.flexicore.product.model.GatewayFiltering;
+import com.flexicore.iot.model.FlexiCoreServer;
+
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class FlexiCoreGatewayFiltering extends GatewayFiltering {
@@ -14,6 +15,7 @@ public class FlexiCoreGatewayFiltering extends GatewayFiltering {
     private String basePathLike;
 
     @JsonIgnore
+    @Transient
     private FlexiCoreServer flexiCoreServer;
 
     @FieldInfo(description = "flexicoreServerId",displayName = "flexicore server id")
@@ -31,6 +33,7 @@ public class FlexiCoreGatewayFiltering extends GatewayFiltering {
     }
 
     @JsonIgnore
+    @Transient
     public FlexiCoreServer getFlexiCoreServer() {
         return flexiCoreServer;
     }
