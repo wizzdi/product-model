@@ -11,10 +11,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class EquipmentToGroup extends Baselink {
-    static EquipmentToGroup s_Singleton = new EquipmentToGroup();
-    public static EquipmentToGroup s() {
-        return s_Singleton;
-    }
 
 
     public EquipmentToGroup() {

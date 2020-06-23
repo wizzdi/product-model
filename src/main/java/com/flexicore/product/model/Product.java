@@ -19,16 +19,11 @@ import java.util.List;
 @Entity
 @SyncOption(continueSyncRecursionOnOneToMany = true)
 public class Product extends Baseclass {
-    static Product s_Singleton = new Product();
-
-    public static Product s() {
-        return s_Singleton;
-    }
 
     @JsonView(Views.Unrefined.class)
     private String sku;
     @JsonView(Views.Unrefined.class)
-    @OneToOne(targetEntity = Model.class)
+    @ManyToOne(targetEntity = Model.class)
     private Model model;
 
     @JsonView(Views.Unrefined.class)
@@ -76,7 +71,7 @@ public class Product extends Baseclass {
         return this;
     }
 
-    @OneToOne(targetEntity = Model.class)
+    @ManyToOne(targetEntity = Model.class)
     @JsonView(Views.Unrefined.class)
     public Model getModel() {
         return model;

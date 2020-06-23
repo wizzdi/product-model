@@ -11,10 +11,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class StatusLinkToImage extends Baseclass {
-    static StatusLinkToImage s_Singleton = new StatusLinkToImage();
-    public static StatusLinkToImage s() {
-        return s_Singleton;
-    }
 
     @ManyToOne(targetEntity = FileResource.class)
     private FileResource image;

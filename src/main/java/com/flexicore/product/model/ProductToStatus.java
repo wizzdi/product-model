@@ -11,10 +11,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ProductToStatus extends Baselink {
-    static ProductToStatus s_Singleton = new ProductToStatus();
-    public static ProductToStatus s() {
-        return s_Singleton;
-    }
 
     private boolean enabled;
 

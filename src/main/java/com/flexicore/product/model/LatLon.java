@@ -15,11 +15,6 @@ import java.util.List;
 
 @Entity
 public class LatLon extends Baseclass {
-    static LatLon s_Singleton = new LatLon();
-
-    public static LatLon s() {
-        return s_Singleton;
-    }
 
 
     private int ordinal;

@@ -15,10 +15,6 @@ import java.util.List;
 
 @Entity
 public class ProductType extends Baseclass {
-    static ProductType s_Singleton = new ProductType();
-    public static ProductType s() {
-        return s_Singleton;
-    }
 
     public ProductType() {
     }

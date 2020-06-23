@@ -8,12 +8,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ExternalServerUser extends Baseclass {
-    static ExternalServerUser s_Singleton = new ExternalServerUser();
-
-    public static ExternalServerUser s() {
-        return s_Singleton;
-    }
-
     public ExternalServerUser() {
     }
 

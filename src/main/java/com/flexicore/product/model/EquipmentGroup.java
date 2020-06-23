@@ -13,10 +13,7 @@ import java.util.List;
 
 @Entity
 public class EquipmentGroup extends Baseclass {
-    static EquipmentGroup s_Singleton = new EquipmentGroup();
-    public static EquipmentGroup s() {
-        return s_Singleton;
-    }
+
 
     public EquipmentGroup() {
     }

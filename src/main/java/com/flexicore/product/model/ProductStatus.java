@@ -12,13 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@SyncOption(continueSyncRecursionOnOneToMany = false)
 @Entity
 public class ProductStatus extends Baseclass {
-    static ProductStatus s_Singleton = new ProductStatus();
-    public static ProductStatus s() {
-        return s_Singleton;
-    }
 
 
     public ProductStatus() {

@@ -13,10 +13,6 @@ import java.util.List;
 
 @Entity
 public class ExternalServer extends Equipment {
-    static ExternalServer s_Singleton = new ExternalServer();
-    public static ExternalServer s() {
-        return s_Singleton;
-    }
 
     private String url;
     private long inspectIntervalMs;

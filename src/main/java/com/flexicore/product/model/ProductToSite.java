@@ -15,10 +15,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ProductToSite extends Baselink {
-    static ProductToSite s_Singleton = new ProductToSite();
-    public static ProductToSite s() {
-        return s_Singleton;
-    }
 
 
     public ProductToSite() {

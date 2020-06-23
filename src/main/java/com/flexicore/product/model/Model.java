@@ -15,11 +15,7 @@ import java.util.List;
 
 @Entity
 public class Model extends Baseclass {
-    static Model s_Singleton = new Model();
 
-    public static Model s() {
-        return s_Singleton;
-    }
 
     private double weight;
 

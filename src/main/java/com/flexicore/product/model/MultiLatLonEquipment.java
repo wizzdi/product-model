@@ -11,11 +11,6 @@ import java.util.List;
 
 @Entity
 public class MultiLatLonEquipment extends Equipment {
-    private static MultiLatLonEquipment s_Singleton = new MultiLatLonEquipment();
-
-    public static MultiLatLonEquipment s() {
-        return s_Singleton;
-    }
 
     public MultiLatLonEquipment() {
     }

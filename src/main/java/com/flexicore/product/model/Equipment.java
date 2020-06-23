@@ -33,10 +33,6 @@ import java.util.List;
         }
 )
 public class Equipment extends Product {
-    static Equipment s_Singleton = new Equipment();
-    public static Equipment s() {
-        return s_Singleton;
-    }
     static{
         registerSingletone(s_Singleton);
     }

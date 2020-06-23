@@ -11,11 +11,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class ApiProvider extends Baseclass {
-    static ApiProvider s_Singleton = new ApiProvider();
 
-    public static ApiProvider s() {
-        return s_Singleton;
-    }
+
 
     private String url;
     private String username;
