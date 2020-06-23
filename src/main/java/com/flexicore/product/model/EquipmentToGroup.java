@@ -1,5 +1,6 @@
 package com.flexicore.product.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.Baselink;
 import com.flexicore.security.SecurityContext;
@@ -26,6 +27,7 @@ public class EquipmentToGroup extends Baselink {
         return (Equipment) super.getLeftside();
     }
 
+    @JsonIgnore
     public void setLeftside(Equipment leftside) {
         super.setLeftside(leftside);
     }
@@ -41,6 +43,7 @@ public class EquipmentToGroup extends Baselink {
         return (EquipmentGroup) super.getRightside();
     }
 
+    @JsonIgnore
     public void setRightside(EquipmentGroup rightside) {
         super.setRightside(rightside);
     }

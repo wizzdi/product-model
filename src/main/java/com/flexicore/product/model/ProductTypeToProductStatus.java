@@ -42,6 +42,7 @@ public class ProductTypeToProductStatus extends Baselink {
         return (ProductType) super.getLeftside();
     }
 
+    @JsonIgnore
     public void setLeftside(ProductType leftside) {
         super.setLeftside(leftside);
     }
@@ -53,6 +54,7 @@ public class ProductTypeToProductStatus extends Baselink {
         return (ProductStatus) super.getRightside();
     }
 
+    @JsonIgnore
     public void setRightside(ProductStatus rightside) {
         super.setRightside(rightside);
     }
