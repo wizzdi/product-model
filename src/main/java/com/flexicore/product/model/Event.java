@@ -1,6 +1,7 @@
 package com.flexicore.product.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.product.interfaces.IEvent;
 import org.bson.codecs.pojo.annotations.BsonDiscriminator;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.codecs.pojo.annotations.BsonProperty;
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.Set;
 
 @BsonDiscriminator
-public class Event {
+public class Event implements IEvent {
 
     @BsonId
     private String id;

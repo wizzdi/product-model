@@ -51,7 +51,7 @@ public class EquipmentFiltering extends ProductFiltering {
 
 
     @OneToMany(targetEntity = TypeToReturnFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
-    @ListFieldInfo(displayName = "typesToReturnIds",description = "list of canonical class names to return")
+    @ListFieldInfo(displayName = "typesToReturnIds",description = "list of canonical class names to return",listType = TypeToReturnFiltering.class)
 
     private Set<TypeToReturnFiltering> typesToReturnIds = new HashSet<>();
 

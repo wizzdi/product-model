@@ -6,14 +6,14 @@
 
     <groupId>com.wizzdi</groupId>
     <artifactId>product-model</artifactId>
-    <version>2.0.4</version>
+    <version>2.0.7</version>
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <version.eclipselink>2.7.1</version.eclipselink>
-        <jackson.version>2.9.5</jackson.version>
+        <version.eclipselink>2.7.7</version.eclipselink>
+        <jackson.version>2.11.0</jackson.version>
 
-        <flexicore-api.version>4.0.7</flexicore-api.version>
+        <flexicore-api.version>4.0.11</flexicore-api.version>
     </properties>
 
 
