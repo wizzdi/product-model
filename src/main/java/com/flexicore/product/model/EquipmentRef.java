@@ -4,15 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FilteringInformationHolder;
-//import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+//import io.swagger.annotations.ApiModelProperty;
+
 
 @Entity
-public class EquipmentIdFiltering {
+public class EquipmentRef {
 
     @Id
     private String filterId;
@@ -23,9 +24,7 @@ public class EquipmentIdFiltering {
     @JsonIgnore
     private FilteringInformationHolder filteringInformationHolder;
 
-
-
-    public EquipmentIdFiltering() {
+    public EquipmentRef() {
     }
 
     //@ApiModelProperty("Id of the Baseclass")
@@ -34,12 +33,12 @@ public class EquipmentIdFiltering {
     }
 
 
-    public EquipmentIdFiltering setId(String id) {
+    public EquipmentRef setId(String id) {
         this.id = id;
         return this;
     }
 
-    public EquipmentIdFiltering(String id) {
+    public EquipmentRef(String id) {
         this.id = id;
     }
 
@@ -48,7 +47,7 @@ public class EquipmentIdFiltering {
         return filterId;
     }
 
-    public EquipmentIdFiltering setFilterId(String filterId) {
+    public EquipmentRef setFilterId(String filterId) {
         this.filterId = filterId;
         return this;
     }
@@ -59,7 +58,7 @@ public class EquipmentIdFiltering {
         return filteringInformationHolder;
     }
 
-    public EquipmentIdFiltering setFilteringInformationHolder(FilteringInformationHolder filteringInformationHolder) {
+    public EquipmentRef setFilteringInformationHolder(FilteringInformationHolder filteringInformationHolder) {
         this.filteringInformationHolder = filteringInformationHolder;
         return this;
     }

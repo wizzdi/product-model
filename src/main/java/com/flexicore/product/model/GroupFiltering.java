@@ -23,7 +23,7 @@ public class GroupFiltering extends FilteringInformationHolder {
     @Transient
     private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
 
-    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = EquipmentIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "equipmentIds",description = "equipment ids",refType = Equipment.class)
     private List<EquipmentIdFiltering> equipmentIdFilterings=new ArrayList<>();
 
@@ -52,7 +52,7 @@ public class GroupFiltering extends FilteringInformationHolder {
         return this;
     }
 
-    @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @OneToMany(targetEntity = EquipmentIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "equipmentIds",description = "equipment ids",refType = Equipment.class)
     public List<EquipmentIdFiltering> getEquipmentIdFilterings() {
         return equipmentIdFilterings;

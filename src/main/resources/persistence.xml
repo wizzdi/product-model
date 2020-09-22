@@ -64,6 +64,9 @@
         <class>com.flexicore.product.containers.request.BaseclassIdRef</class>
         <class>com.flexicore.product.containers.request.TargetBaseclassIdRef</class>
         <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
+        <class>com.flexicore.product.model.EquipmentRef</class>
+        <class>com.flexicore.product.request.EquipmentLocationFiltering</class>
+        <class>com.flexicore.request.BaseclassNoSQLFilter</class>
 
 
 
