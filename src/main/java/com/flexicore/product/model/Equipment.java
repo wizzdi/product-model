@@ -1,6 +1,8 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.building.model.BuildingFloor;
+import com.flexicore.building.model.Room;
 import com.flexicore.iot.ExternalServer;
 import com.flexicore.model.FileResource;
 import com.flexicore.model.territories.Address;
@@ -49,6 +51,11 @@ public class Equipment extends Product {
     @JsonIgnore
     @ManyToOne(targetEntity = ExternalServer.class)
     private ExternalServer externalServer;
+
+    @ManyToOne(targetEntity = BuildingFloor.class)
+    private BuildingFloor buildingFloor;
+    @ManyToOne(targetEntity = Room.class)
+    private Room room;
 
 
     private String geoHash1;
@@ -381,6 +388,25 @@ public class Equipment extends Product {
         return (T) this;
     }
 
+    @ManyToOne(targetEntity = BuildingFloor.class)
+    public BuildingFloor getBuildingFloor() {
+        return buildingFloor;
+    }
+
+    public <T extends Equipment> T setBuildingFloor(BuildingFloor buildingFloor) {
+        this.buildingFloor = buildingFloor;
+        return (T) this;
+    }
+
+    @ManyToOne(targetEntity = Room.class)
+    public Room getRoom() {
+        return room;
+    }
+
+    public <T extends Equipment> T setRoom(Room room) {
+        this.room = room;
+        return (T) this;
+    }
 
     @Lob
     public String getDescriptor3D() {

@@ -67,6 +67,20 @@
         <class>com.flexicore.product.model.EquipmentRef</class>
         <class>com.flexicore.product.request.EquipmentLocationFiltering</class>
         <class>com.flexicore.request.BaseclassNoSQLFilter</class>
+        <class>com.flexicore.building.model.Door</class>
+        <class>com.flexicore.building.model.DoorFiltering</class>
+        <class>com.flexicore.building.model.Fan</class>
+        <class>com.flexicore.building.model.FanFiltering</class>
+        <class>com.flexicore.product.model.EquipmentFiltering</class>
+        <class>com.flexicore.product.model.ProductFiltering</class>
+        <class>com.flexicore.model.FilteringInformationHolder</class>
+        <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
+        <class>com.flexicore.building.model.BuildingFloor</class>
+        <class>com.flexicore.building.model.Building</class>
+        <class>com.flexicore.building.model.BuildingFiltering</class>
+        <class>com.flexicore.building.model.BuildingIdFiltering</class>
+        <class>com.flexicore.building.model.BuildingFloorFiltering</class>
+        <class>com.flexicore.building.model.BuildingFloorIdFiltering</class>
 
 
 
