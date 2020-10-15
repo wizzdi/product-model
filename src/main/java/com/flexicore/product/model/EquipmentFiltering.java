@@ -102,6 +102,7 @@ public class EquipmentFiltering extends ProductFiltering {
     @OneToMany(targetEntity = ExternalServerIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @IdRefFieldInfo(displayName = "externalServerIds",description = "filter by external server ids",refType = ExternalServer.class)
     private Set<ExternalServerIdFiltering> externalServerIds = new HashSet<>();
+    @Transient
     @JsonIgnore
     private List<ExternalServer> externalServers=new ArrayList<>();
 
@@ -286,6 +287,8 @@ public class EquipmentFiltering extends ProductFiltering {
 
 
 
+    @JsonIgnore
+    @Transient
     public List<ExternalServer> getExternalServers() {
         return externalServers;
     }

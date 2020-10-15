@@ -14,6 +14,8 @@ import java.util.List;
 @Entity
 public class EquipmentGroup extends Baseclass {
 
+    private String externalId;
+
 
     public EquipmentGroup() {
     }
@@ -77,6 +79,15 @@ public class EquipmentGroup extends Baseclass {
 
     public <T extends EquipmentGroup> T setRelatedPermissionGroup(PermissionGroup relatedPermissionGroup) {
         this.relatedPermissionGroup = relatedPermissionGroup;
+        return (T) this;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public <T extends EquipmentGroup> T setExternalId(String externalId) {
+        this.externalId = externalId;
         return (T) this;
     }
 }

@@ -1,7 +1,9 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.building.model.RoomFiltering;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
+import com.flexicore.interfaces.dynamic.ListFieldInfo;
 import com.flexicore.model.FilteringInformationHolder;
 
 import javax.persistence.CascadeType;
@@ -19,6 +21,12 @@ public class GroupFiltering extends FilteringInformationHolder {
     @OneToMany(targetEntity = GroupIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "groupIds",description = "equipment group ids",refType = EquipmentGroup.class)
     private Set<GroupIdFiltering> groupIds = new HashSet<>();
+
+
+    @OneToMany(targetEntity = EquipmentExternalIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ListFieldInfo(displayName = "externalIds",description = "filter by external ids",listType = EquipmentExternalIdFiltering.class)
+    private Set<EquipmentExternalIdFiltering> externalIds = new HashSet<>();
+
     @JsonIgnore
     @Transient
     private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
@@ -74,6 +82,18 @@ public class GroupFiltering extends FilteringInformationHolder {
         return this;
     }
 
+
+    @OneToMany(targetEntity = EquipmentExternalIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    public Set<EquipmentExternalIdFiltering> getExternalIds() {
+        return externalIds;
+    }
+
+    public <T extends GroupFiltering> T setExternalIds(Set<EquipmentExternalIdFiltering> externalEquipmentIds) {
+        this.externalIds = externalEquipmentIds;
+        return (T) this;
+    }
+
+
     @Override
     public void prepareForSave() {
         super.prepareForSave();
@@ -82,6 +102,9 @@ public class GroupFiltering extends FilteringInformationHolder {
         }
         for (EquipmentIdFiltering equipmentIdFiltering : equipmentIdFilterings) {
             equipmentIdFiltering.prepareForSave(this);
+        }
+        for (EquipmentExternalIdFiltering externalId : externalIds) {
+            externalId.prepareForSave(this);
         }
     }
 }
