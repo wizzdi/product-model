@@ -12,6 +12,7 @@ public class EquipmentLocation extends BaseclassNoSQL {
     private double x;
     private double y;
     private String buildingFloorId;
+    private String roomId;
     private String equipmentId;
 
     public Date getDateAtLocation() {
@@ -74,6 +75,15 @@ public class EquipmentLocation extends BaseclassNoSQL {
 
     public <T extends EquipmentLocation> T setEquipmentId(String equipmentId) {
         this.equipmentId = equipmentId;
+        return (T) this;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public <T extends EquipmentLocation> T setRoomId(String roomId) {
+        this.roomId = roomId;
         return (T) this;
     }
 }
