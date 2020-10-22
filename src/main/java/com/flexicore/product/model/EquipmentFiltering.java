@@ -1,6 +1,10 @@
 package com.flexicore.product.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.building.model.BuildingFloor;
+import com.flexicore.building.model.BuildingFloorIdFiltering;
+import com.flexicore.building.model.Room;
+import com.flexicore.building.model.RoomIdFiltering;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.interfaces.dynamic.ListFieldInfo;
@@ -68,6 +72,24 @@ public class EquipmentFiltering extends ProductFiltering {
     @Transient
     private List<EquipmentGroup> equipmentGroups = new ArrayList<>();
 
+    @OneToMany(targetEntity = BuildingFloorIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "buildingFloorIds",description = "building floor ids",refType = BuildingFloor.class)
+    private Set<BuildingFloorIdFiltering> buildingFloorIds=new HashSet<>();
+
+
+    @JsonIgnore
+    @Transient
+    private List<BuildingFloor> buildingFloors=new ArrayList<>();
+
+    @OneToMany(targetEntity = RoomIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+    @IdRefFieldInfo(displayName = "roomIds",description = "room ids",refType = Room.class)
+    private Set<RoomIdFiltering> roomIds=new HashSet<>();
+
+
+    @JsonIgnore
+    @Transient
+    private List<Room> rooms=new ArrayList<>();
+
     @OneToOne(targetEntity = LocationArea.class)
     @FieldInfo(displayName = "locationArea",description = "area to search equipment in")
     private LocationArea locationArea;
@@ -75,6 +97,7 @@ public class EquipmentFiltering extends ProductFiltering {
     @OneToMany(targetEntity = NeighbourhoodIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
     @IdRefFieldInfo(displayName = "neighbourhoods",description = "neighbourhood ids",refType = Neighbourhood.class)
     private Set<NeighbourhoodIdFiltering> neighbourhoodIds=new HashSet<>();
+
 
     @JsonIgnore
     @Transient
@@ -334,6 +357,50 @@ public class EquipmentFiltering extends ProductFiltering {
         return (T) this;
     }
 
+    @OneToMany(targetEntity = RoomIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+
+    public Set<RoomIdFiltering> getRoomIds() {
+        return roomIds;
+    }
+
+    public <T extends EquipmentFiltering> T setRoomIds(Set<RoomIdFiltering> roomIds) {
+        this.roomIds = roomIds;
+        return (T) this;
+    }
+
+    @JsonIgnore
+    @Transient
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public <T extends EquipmentFiltering> T setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+        return (T) this;
+    }
+
+    @OneToMany(targetEntity = BuildingFloorIdFiltering.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "filteringInformationHolder")
+
+    public Set<BuildingFloorIdFiltering> getBuildingFloorIds() {
+        return buildingFloorIds;
+    }
+
+    public <T extends EquipmentFiltering> T setBuildingFloorIds(Set<BuildingFloorIdFiltering> buildingFloorIds) {
+        this.buildingFloorIds = buildingFloorIds;
+        return (T) this;
+    }
+
+    @JsonIgnore
+    @Transient
+    public List<BuildingFloor> getBuildingFloors() {
+        return buildingFloors;
+    }
+
+    public <T extends EquipmentFiltering> T setBuildingFloors(List<BuildingFloor> buildingFloors) {
+        this.buildingFloors = buildingFloors;
+        return (T) this;
+    }
+
     @Override
     public void prepareForSave() {
         super.prepareForSave();
@@ -364,6 +431,12 @@ public class EquipmentFiltering extends ProductFiltering {
 
         for (EquipmentByStatusEntryIdFiltering equipmentByStatusEntryId : equipmentByStatusEntryIds) {
             equipmentByStatusEntryId.prepareForSave(this);
+        }
+        for (BuildingFloorIdFiltering buildingFloorId : buildingFloorIds) {
+            buildingFloorId.prepareForSave(this);
+        }
+        for (RoomIdFiltering roomId : roomIds) {
+            roomId.prepareForSave(this);
         }
         if(locationArea!=null){
             locationArea.prepareForSave(this);

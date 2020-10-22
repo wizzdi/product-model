@@ -83,6 +83,7 @@
         <class>com.flexicore.building.model.BuildingFloorIdFiltering</class>
         <class>com.flexicore.building.model.Room</class>
         <class>com.flexicore.building.model.RoomFiltering</class>
+        <class>com.flexicore.building.model.RoomIdFiltering</class>
 
 
 
