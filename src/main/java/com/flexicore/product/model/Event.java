@@ -49,7 +49,7 @@ public class Event implements IEvent {
         this.setEventDate(Date.from(Instant.now()))
                 .setBaseclassId(equipment.getId())
                 .setBaseclassName(equipment.getName())
-                .setClazzName(Baseclass.getClazzbyname(equipment.getClass().getCanonicalName()).getName())
+                .setClazzName(Baseclass.getClazzByName(equipment.getClass().getCanonicalName()).getName())
                 .setBaseclassTenantId(equipment.getTenant() != null ? equipment.getTenant().getId() : null)
                 .setCommunicationGatewayId(equipment.getCommunicationGateway() != null ? equipment.getCommunicationGateway().getId() : null)
                 .setBaseclassLat(equipment.getLat())

@@ -3,9 +3,7 @@ package com.flexicore.product.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.model.Baseclass;
-import com.flexicore.model.CategoryIdFiltering;
 import com.flexicore.model.FilteringInformationHolder;
-//import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
