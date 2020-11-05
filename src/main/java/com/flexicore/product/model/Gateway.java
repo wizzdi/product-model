@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 
 @Entity
@@ -18,18 +18,18 @@ public class Gateway extends Equipment {
         super(name, securityContext);
     }
 
-    private LocalDateTime lastSucessfulConnction;
+    private OffsetDateTime lastSucessfulConnction;
     private String ip;
     private int port;
     private String username;
     @JsonIgnore
     private String encryptedPassword;
 
-    public LocalDateTime getLastSucessfulConnction() {
+    public OffsetDateTime getLastSucessfulConnction() {
         return lastSucessfulConnction;
     }
 
-    public Gateway setLastSucessfulConnction(LocalDateTime lastSucessfulConnction) {
+    public Gateway setLastSucessfulConnction(OffsetDateTime lastSucessfulConnction) {
         this.lastSucessfulConnction = lastSucessfulConnction;
         return this;
     }

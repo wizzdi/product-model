@@ -9,7 +9,7 @@ import com.flexicore.model.territories.Address;
 import com.flexicore.security.SecurityContext;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +88,7 @@ public class Equipment extends Product {
     private double y;
     private String humanReadableLocation;
 
-    private LocalDateTime warrantyExpiration;
+    private OffsetDateTime warrantyExpiration;
 
     @ManyToOne(targetEntity = Address.class)
     private Address address;
@@ -131,11 +131,11 @@ public class Equipment extends Product {
         return this;
     }
 
-    public LocalDateTime getWarrantyExpiration() {
+    public OffsetDateTime getWarrantyExpiration() {
         return warrantyExpiration;
     }
 
-    public Equipment setWarrantyExpiration(LocalDateTime warrantyExpiration) {
+    public Equipment setWarrantyExpiration(OffsetDateTime warrantyExpiration) {
         this.warrantyExpiration = warrantyExpiration;
         return this;
     }

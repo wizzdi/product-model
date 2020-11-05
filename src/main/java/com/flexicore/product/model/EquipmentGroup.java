@@ -6,7 +6,7 @@ import com.flexicore.model.PermissionGroup;
 import com.flexicore.security.SecurityContext;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

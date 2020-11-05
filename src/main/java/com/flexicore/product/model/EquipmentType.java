@@ -4,7 +4,7 @@ import com.flexicore.model.Baseclass;
 import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 
 @Entity

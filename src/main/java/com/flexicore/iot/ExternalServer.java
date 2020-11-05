@@ -7,7 +7,7 @@ import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +18,8 @@ public class ExternalServer extends Equipment {
     private long inspectIntervalMs;
     private long inspectAfterActivateIntervalMs;
 
-    private LocalDateTime lastInspectAttempt;
-    private LocalDateTime lastSuccessfulInspect;
+    private OffsetDateTime lastInspectAttempt;
+    private OffsetDateTime lastSuccessfulInspect;
 
 
     @JsonIgnore
@@ -64,20 +64,20 @@ public class ExternalServer extends Equipment {
         return (T) this;
     }
 
-    public LocalDateTime getLastInspectAttempt() {
+    public OffsetDateTime getLastInspectAttempt() {
         return lastInspectAttempt;
     }
 
-    public <T extends ExternalServer> T setLastInspectAttempt(LocalDateTime lastInspectAttempt) {
+    public <T extends ExternalServer> T setLastInspectAttempt(OffsetDateTime lastInspectAttempt) {
         this.lastInspectAttempt = lastInspectAttempt;
         return (T) this;
     }
 
-    public LocalDateTime getLastSuccessfulInspect() {
+    public OffsetDateTime getLastSuccessfulInspect() {
         return lastSuccessfulInspect;
     }
 
-    public <T extends ExternalServer> T setLastSuccessfulInspect(LocalDateTime lastSuccessfulInspect) {
+    public <T extends ExternalServer> T setLastSuccessfulInspect(OffsetDateTime lastSuccessfulInspect) {
         this.lastSuccessfulInspect = lastSuccessfulInspect;
         return (T) this;
     }

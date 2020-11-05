@@ -87,6 +87,7 @@ public class Event implements IEvent {
         return (T) this;
     }
 
+    @Override
     public String getEventType() {
         return eventType;
     }
