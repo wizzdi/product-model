@@ -1,10 +1,11 @@
 package com.flexicore.product.model;
 
 import com.flexicore.model.nosql.BaseclassNoSQL;
+import com.flexicore.product.interfaces.IEvent;
 
 import java.util.Date;
 
-public class EquipmentLocation extends BaseclassNoSQL {
+public class EquipmentLocation extends BaseclassNoSQL implements IEvent {
 
     private Date dateAtLocation;
     private double lat;
