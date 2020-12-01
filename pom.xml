@@ -6,7 +6,7 @@
 
     <groupId>com.wizzdi</groupId>
     <artifactId>product-model</artifactId>
-    <version>2.2.4</version>
+    <version>2.3.0</version>
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>com.wizzdi</groupId>
             <artifactId>organization-model</artifactId>
-            <version>1.1.2</version>
+            <version>2.1.0</version>
             <scope>provided</scope>
         </dependency>
 
