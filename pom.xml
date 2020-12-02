@@ -4,7 +4,7 @@
 
     <groupId>com.wizzdi</groupId>
     <artifactId>product-model</artifactId>
-    <version>2.3.0</version>
+    <version>2.3.1-SNAPSHOT</version>
     <name>product-model</name>
     <description>FlexiCore model plugin , manages products and equipments</description>
     <url>https://wizzdi.com</url>
@@ -54,7 +54,7 @@
         <connection>scm:git:git://wizzdi/product-model.git</connection>
         <developerConnection>scm:git:git@github.com:wizzdi/product-model.git</developerConnection>
         <url>https://github.com/wizzdi/product-model</url>
-        <tag>product-model-2.3.0</tag>
+        <tag>product-model-{version}</tag>
     </scm>
 
     <dependencies>
