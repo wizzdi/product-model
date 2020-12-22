@@ -48,7 +48,6 @@ public class Equipment extends Product {
     private String serial;
     private String externalId;
     private String nameHe;
-    @JsonIgnore
     @ManyToOne(targetEntity = ExternalServer.class)
     private ExternalServer externalServer;
 
@@ -377,7 +376,6 @@ public class Equipment extends Product {
         return this;
     }
 
-    @JsonIgnore
     @ManyToOne(targetEntity = ExternalServer.class)
     public ExternalServer getExternalServer() {
         return externalServer;
