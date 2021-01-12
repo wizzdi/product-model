@@ -22,50 +22,50 @@ public class LocationArea {
     private EquipmentFiltering equipmentFiltering;
 
     @FieldInfo(displayName = "lonStart",description = "longitude starts")
-    private double lonStart;
+    private Double lonStart;
     @FieldInfo(displayName = "latStart",description = "latitude starts")
 
-    private double latStart;
+    private Double latStart;
     @FieldInfo(displayName = "lonEnd",description = "longitude ends")
 
-    private double lonEnd;
+    private Double lonEnd;
     @FieldInfo(displayName = "latEnd",description = "latitude ends")
 
-    private double latEnd;
+    private Double latEnd;
 
 
-    public double getLonStart() {
+    public Double getLonStart() {
         return lonStart;
     }
 
-    public LocationArea setLonStart(double lonStart) {
+    public LocationArea setLonStart(Double lonStart) {
         this.lonStart = lonStart;
         return this;
     }
 
-    public double getLatStart() {
+    public Double getLatStart() {
         return latStart;
     }
 
-    public LocationArea setLatStart(double latStart) {
+    public LocationArea setLatStart(Double latStart) {
         this.latStart = latStart;
         return this;
     }
 
-    public double getLonEnd() {
+    public Double getLonEnd() {
         return lonEnd;
     }
 
-    public LocationArea setLonEnd(double lonEnd) {
+    public LocationArea setLonEnd(Double lonEnd) {
         this.lonEnd = lonEnd;
         return this;
     }
 
-    public double getLatEnd() {
+    public Double getLatEnd() {
         return latEnd;
     }
 
-    public LocationArea setLatEnd(double latEnd) {
+    public LocationArea setLatEnd(Double latEnd) {
         this.latEnd = latEnd;
         return this;
     }
