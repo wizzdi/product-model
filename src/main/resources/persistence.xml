@@ -40,9 +40,6 @@
         <class>com.flexicore.product.model.GatewayConsoleIdFiltering</class>
         <class>com.flexicore.product.model.EquipmentIdFiltering</class>
         <class>com.flexicore.product.model.GatewayFiltering</class>
-        <class>com.flexicore.iot.model.FlexiCoreServer</class>
-        <class>com.flexicore.product.model.FlexiCoreGateway</class>
-        <class>com.flexicore.product.model.FlexiCoreGatewayFiltering</class>
         <class>com.flexicore.product.model.ProductToSite</class>
         <class>com.flexicore.product.model.ProductFiltering</class>
         <class>com.flexicore.organization.model.SupplierToProduct</class>
@@ -85,6 +82,9 @@
         <class>com.flexicore.building.model.RoomFiltering</class>
         <class>com.flexicore.building.model.RoomIdFiltering</class>
         <class>com.flexicore.organization.model.Supplier</class>
+        <class>com.flexicore.building.model.Campus</class>
+        <class>com.flexicore.building.model.CampusIdFiltering</class>
+        <class>com.flexicore.building.model.CampusFilter</class>
 
 
 

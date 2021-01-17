@@ -5,6 +5,7 @@ import com.flexicore.product.model.Equipment;
 import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,8 @@ public class Building extends Equipment {
 	@OneToMany(targetEntity = BuildingFloor.class, mappedBy = "building")
 	@JsonIgnore
 	private List<BuildingFloor> floors = new ArrayList<>();
+	@ManyToOne(targetEntity = Campus.class)
+	private Campus campus;
 
 	@OneToMany(targetEntity = BuildingFloor.class, mappedBy = "building")
 	@JsonIgnore
@@ -32,5 +35,15 @@ public class Building extends Equipment {
 	public Building setFloors(List<BuildingFloor> floors) {
 		this.floors = floors;
 		return this;
+	}
+
+	@ManyToOne(targetEntity = Campus.class)
+	public Campus getCampus() {
+		return campus;
+	}
+
+	public <T extends Building> T setCampus(Campus campus) {
+		this.campus = campus;
+		return (T) this;
 	}
 }
