@@ -1,16 +1,17 @@
 package com.flexicore.building.model;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.converters.JsonConverter;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FileResource;
 import com.flexicore.product.model.Equipment;
 import com.flexicore.security.SecurityContext;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 public class BuildingFloor extends Baseclass {
@@ -35,6 +36,9 @@ public class BuildingFloor extends Baseclass {
 	@JsonIgnore
 	@OneToMany(targetEntity = Equipment.class,mappedBy = "buildingFloor")
 	private List<Equipment> equipments=new ArrayList<>();
+	@Column(columnDefinition = "jsonb")
+	@Convert(converter = JsonConverter.class)
+	private Map<String, Object> jsonNode;
 
 
 	public int getFloorNumber() {
@@ -84,6 +88,21 @@ public class BuildingFloor extends Baseclass {
 
 	public <T extends BuildingFloor> T setEquipments(List<Equipment> equipments) {
 		this.equipments = equipments;
+		return (T) this;
+	}
+	@JsonIgnore
+	@Transient
+	public Map<String, Object> getJsonNode() {
+		return jsonNode;
+	}
+
+	@JsonAnyGetter
+	public Map<String, Object> any() {
+		return jsonNode;
+	}
+
+	public <T extends Baseclass> T setJsonNode(Map<String, Object> jsonNode) {
+		this.jsonNode = jsonNode;
 		return (T) this;
 	}
 }
