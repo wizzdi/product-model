@@ -4,7 +4,7 @@
 
     <groupId>com.wizzdi</groupId>
     <artifactId>product-model</artifactId>
-    <version>2.3.4-SNAPSHOT</version>
+    <version>2.3.4-HOTFIX1</version>
     <name>product-model</name>
     <description>FlexiCore model plugin , manages products and equipments</description>
     <url>https://wizzdi.com</url>
@@ -22,7 +22,7 @@
         <version.eclipselink>2.7.7</version.eclipselink>
         <jackson.version>2.11.0</jackson.version>
 
-        <flexicore-api.version>4.2.1</flexicore-api.version>
+        <flexicore-api.version>4.2.11-SNAPSHOT</flexicore-api.version>
     </properties>
     <distributionManagement>
         <snapshotRepository>
