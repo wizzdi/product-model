@@ -131,7 +131,7 @@ public class EquipmentFiltering extends ProductFiltering {
 
 
     @OneToMany(targetEntity = EquipmentIdFiltering.class, mappedBy = "filteringInformationHolder", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @IdRefFieldInfo(displayName = "equipmentIds",description = "specific equipments",refType = Equipment.class)
+    @IdRefFieldInfo(displayName = "equipmentIds",description = "specific equipments",refType = Equipment.class,actionId = true)
 
     private Set<EquipmentIdFiltering> equipmentIds = new HashSet<>();
 

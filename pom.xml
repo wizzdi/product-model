@@ -22,7 +22,6 @@
         <version.eclipselink>2.7.7</version.eclipselink>
         <jackson.version>2.11.0</jackson.version>
 
-        <flexicore-api.version>4.2.1</flexicore-api.version>
     </properties>
     <distributionManagement>
         <snapshotRepository>
