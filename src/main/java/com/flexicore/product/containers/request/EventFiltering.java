@@ -21,7 +21,7 @@ public class EventFiltering extends FilteringInformationHolder {
 
     @FieldInfo(displayName = "Search Readable Text")
     private String humanReadableTextLike;
-
+    @FieldInfo(displayName = "Event Type")
     private String eventType;
     @FieldInfo(displayName = "Event Sub Type")
     private String eventSubType;
