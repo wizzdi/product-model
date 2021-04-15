@@ -14,8 +14,12 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class ProductToSite extends Baselink {
+public class ProductToSite extends Baseclass {
 
+    @ManyToOne(targetEntity = Product.class)
+    private Product product;
+    @ManyToOne(targetEntity = Site.class)
+    private Site site;
 
     public ProductToSite() {
     }
@@ -24,35 +28,24 @@ public class ProductToSite extends Baselink {
         super(name, securityContext);
     }
 
-    @Override
-    @ManyToOne(targetEntity = Product.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})
-    public Product getLeftside() {
-        return (Product) super.getLeftside();
+
+    @ManyToOne(targetEntity = Product.class)
+    public Product getProduct() {
+        return product;
     }
 
-    public void setLeftside(Product leftside) {
-        super.setLeftside(leftside);
+    public <T extends ProductToSite> T setProduct(Product product) {
+        this.product = product;
+        return (T) this;
     }
 
-    @Override
-    public void setLeftside(Baseclass leftside) {
-        super.setLeftside(leftside);
+    @ManyToOne(targetEntity = Site.class)
+    public Site getSite() {
+        return site;
     }
 
-    @Override
-    @ManyToOne(targetEntity = Site.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})
-    public Site getRightside() {
-        return (Site) super.getRightside();
+    public <T extends ProductToSite> T setSite(Site site) {
+        this.site = site;
+        return (T) this;
     }
-
-    public void setRightside(Site rightside) {
-        super.setRightside(rightside);
-    }
-
-    @Override
-    public void setRightside(Baseclass rightside) {
-        super.setRightside(rightside);
-    }
-
-
 }

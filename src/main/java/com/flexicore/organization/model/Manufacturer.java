@@ -19,10 +19,6 @@ public class Manufacturer extends Organization {
     public Manufacturer() {
     }
 
-    public Manufacturer(String name, SecurityContext securityContext) {
-        super(name, securityContext);
-    }
-
     @OneToMany(targetEntity = Model.class,mappedBy = "manufacturer",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JsonIgnore
     private List<Model> models=new ArrayList<>();

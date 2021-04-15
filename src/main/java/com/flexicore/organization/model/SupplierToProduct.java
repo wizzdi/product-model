@@ -11,7 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class SupplierToProduct extends TimedLink {
+public class SupplierToProduct extends Baseclass {
+
+	@ManyToOne(targetEntity = Supplier.class)
+	private Supplier supplier;
+	@ManyToOne(targetEntity = Product.class)
+	private Product product;
+	private double price;
 
 
 	public SupplierToProduct() {
@@ -21,49 +27,33 @@ public class SupplierToProduct extends TimedLink {
 		super(name, securityContext);
 	}
 
-	private double price;
-
-	@Override
-	@ManyToOne(targetEntity = Supplier.class, cascade = {CascadeType.MERGE,
-			CascadeType.PERSIST})
-	public Supplier getLeftside() {
-		return (Supplier) super.getLeftside();
-	}
-	@JsonIgnore
-	public void setLeftside(Supplier leftside) {
-		super.setLeftside(leftside);
+	@ManyToOne(targetEntity = Supplier.class)
+	public Supplier getSupplier() {
+		return supplier;
 	}
 
-	@Override
-	@JsonIgnore
-	public void setLeftside(Baseclass leftside) {
-		super.setLeftside(leftside);
+	public <T extends SupplierToProduct> T setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+		return (T) this;
 	}
 
-	@Override
-	@ManyToOne(targetEntity = Product.class, cascade = {CascadeType.MERGE,
-			CascadeType.PERSIST})
-	public Product getRightside() {
-		return (Product) super.getRightside();
+	@ManyToOne(targetEntity = Product.class)
+	public Product getProduct() {
+		return product;
 	}
 
-	@JsonIgnore
-	public void setRightside(Product rightside) {
-		super.setRightside(rightside);
+	public <T extends SupplierToProduct> T setProduct(Product product) {
+		this.product = product;
+		return (T) this;
 	}
 
-	@Override
-	@JsonIgnore
-	public void setRightside(Baseclass rightside) {
-		super.setRightside(rightside);
+	public <T extends SupplierToProduct> T setPrice(double price) {
+		this.price = price;
+		return (T) this;
 	}
 
 	public double getPrice() {
 		return price;
 	}
 
-	public SupplierToProduct setPrice(double price) {
-		this.price = price;
-		return this;
-	}
 }
