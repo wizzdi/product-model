@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.building.model.BuildingFloor;
 import com.flexicore.building.model.Room;
 import com.flexicore.iot.ExternalServer;
-import com.flexicore.model.FileResource;
 import com.flexicore.model.territories.Address;
 import com.flexicore.security.SecurityContext;
+import com.wizzdi.flexicore.file.model.FileResource;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;

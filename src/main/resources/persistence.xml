@@ -27,7 +27,7 @@
         <class>com.flexicore.model.territories.Street</class>
         <class>com.flexicore.model.Baseclass</class>
         <class>com.flexicore.model.Baselink</class>
-        <class>com.flexicore.model.FileResource</class>
+        <class>com.wizzdi.flexicore.file.model.FileResource</class>
         <class>com.flexicore.model.territories.Address</class>
         <class>com.flexicore.model.PermissionGroup</class>
         <class>com.flexicore.product.model.TypeToReturnFiltering</class>

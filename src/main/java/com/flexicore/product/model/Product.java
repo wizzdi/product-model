@@ -43,7 +43,7 @@ public class Product extends Baseclass {
     @JsonIgnore
     private List<ProductToStatus> productToStatusList=new ArrayList<>();
 
-    @OneToMany(targetEntity = SupplierToProduct.class,mappedBy = "rightside")
+    @OneToMany(targetEntity = SupplierToProduct.class,mappedBy = "product")
     @JsonIgnore
     private List<SupplierToProduct> supplierToProducts=new ArrayList<>();
 
@@ -93,7 +93,7 @@ public class Product extends Baseclass {
         return this;
     }
 
-    @OneToMany(targetEntity = SupplierToProduct.class,mappedBy = "rightside")
+    @OneToMany(targetEntity = SupplierToProduct.class,mappedBy = "product")
     @JsonIgnore
     public List<SupplierToProduct> getSupplierToProducts() {
         return supplierToProducts;

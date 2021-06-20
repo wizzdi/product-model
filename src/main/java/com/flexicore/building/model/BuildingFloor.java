@@ -2,9 +2,9 @@ package com.flexicore.building.model;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.flexicore.converters.JsonConverter;
 import com.flexicore.model.Baseclass;
-import com.flexicore.model.FileResource;
+import com.wizzdi.dynamic.properties.converter.JsonConverter;
+import com.wizzdi.flexicore.file.model.FileResource;
 import com.flexicore.product.model.Equipment;
 import com.flexicore.security.SecurityContext;
 
