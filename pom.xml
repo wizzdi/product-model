@@ -24,7 +24,7 @@
         <flexicore-boot-dependencies.version>2.1.2</flexicore-boot-dependencies.version>
         <flexicore-territories-model.version>3.0.0</flexicore-territories-model.version>
         <organization-model.version>3.0.0</organization-model.version>
-        <pricing-model.version>1.0.0-SNAPSHOT</pricing-model.version>
+        <pricing-model.version>1.0.0</pricing-model.version>
     </properties>
     <distributionManagement>
         <snapshotRepository>
