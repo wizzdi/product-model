@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.Baselink;
 import com.flexicore.security.SecurityContext;
+import com.flexicore.security.SecurityContextBase;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,9 +18,10 @@ public class EquipmentToGroup extends Baselink {
     public EquipmentToGroup() {
     }
 
-    public EquipmentToGroup(String name, SecurityContext securityContext) {
+    public EquipmentToGroup(String name, SecurityContextBase securityContext) {
         super(name, securityContext);
     }
+
 
     @Override
     @ManyToOne(targetEntity =Equipment.class, cascade = {CascadeType.MERGE ,CascadeType.PERSIST})

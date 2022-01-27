@@ -7,6 +7,7 @@ import com.flexicore.organization.model.ConsumerToOrganization;
 import com.flexicore.organization.model.Organization;
 import com.flexicore.organization.model.Site;
 import com.flexicore.security.SecurityContext;
+import com.flexicore.security.SecurityContextBase;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class ProductToSite extends Baselink {
     public ProductToSite() {
     }
 
-    public ProductToSite(String name, SecurityContext securityContext) {
+    public ProductToSite(String name, SecurityContextBase securityContext) {
         super(name, securityContext);
     }
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.Baselink;
 import com.flexicore.security.SecurityContext;
+import com.flexicore.security.SecurityContextBase;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class ProductToStatus extends Baselink {
     public ProductToStatus() {
     }
 
-    public ProductToStatus(String name, SecurityContext securityContext) {
+    public ProductToStatus(String name, SecurityContextBase securityContext) {
         super(name, securityContext);
     }
 
